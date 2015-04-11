@@ -4,3 +4,6 @@
 [submodule "plugins/wpsite-limit-posts"]
 	path = plugins/wpsite-limit-posts
 	url = https://github.com/mgratch/wpsite-limit-posts.git
+[submodule "plugins/client-js"]
+	path = plugins/client-js
+	url = https://github.com/WP-API/client-js.git
