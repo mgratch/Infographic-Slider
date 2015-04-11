@@ -7,3 +7,6 @@
 [submodule "plugins/client-js"]
 	path = plugins/client-js
 	url = https://github.com/WP-API/client-js.git
+[submodule "themes/_s_backbone"]
+	path = themes/_s_backbone
+	url = https://github.com/mgratch/_s_backbone.git

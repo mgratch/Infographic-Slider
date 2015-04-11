@@ -85,7 +85,7 @@ function gallery_script_and_styles()
 	wp_enqueue_script('royalSliderJS', get_template_directory_uri() . '/js/jquery.royalslider.custom.min.js', array('jquery'), FALSE, FALSE);
     wp_enqueue_script('jquery-mousewheel', get_template_directory_uri() . '/js/jquery-mousewheel.js', array('jquery'), FALSE, FALSE);
 }
-add_action( 'wp_enqueue_scripts', 'gallery_script_and_styles' );
+add_action( 'wp_enqueue_scripts', 'gallery_script_and_styles',11 );
 
 function fix_my_gallery_wpse43558($output, $attr) {
 	global $post;
@@ -178,9 +178,9 @@ function fix_my_gallery_wpse43558($output, $attr) {
 		}
 		$output .= '<li>';
 		$output .= $linkStart;
-		$output .= "<a class='rsImg' href='".$link[0]."'";
+		$output .= "<img class='rsImg' src='".$link[0]."'";
 		$output .= 'title="'.$attachment->post_title.'" ';
-		$output .= 'alt="'.$alt_tag.'" >'.$alt_tag.'</a>';
+		$output .= 'alt="'.$alt_tag.'" />';
 		//$output .= $alt_tag;
 		$output .= '</li>'. "\n" ;
 
@@ -190,5 +190,5 @@ function fix_my_gallery_wpse43558($output, $attr) {
 	return $output;
 }
 add_filter("post_gallery", "fix_my_gallery_wpse43558",10,2);
-add_filter( 'pods_json_api_access_pods_get_items', '__return_true' );
-
+//add_action( 'wp_enqueue_scripts', 'json_api_client_js',10 );
+//add_filter( 'pods_json_api_access_pods_get_items', '__return_true' );

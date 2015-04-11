@@ -6,6 +6,7 @@ jQuery(document).ready(function($) {
         columns: 'auto',
         padding: 10,
         order: 'masonry',
+        lazyload: 100,
         prevent_crop: false,
         // lightbox settings
         modal_name : 'prettyPhoto',
