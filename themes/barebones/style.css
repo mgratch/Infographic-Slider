@@ -1,0 +1,831 @@
+/*
+Theme Name: barebones
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: barebones
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+barebones is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+a {
+    color: #fff;
+}
+label {
+    display: none;
+}
+input {
+    font-size: 1.25em;
+    padding: 1%;
+    margin: 2% 2% 2% 0;
+}
+input[type="submit"] {
+    background-color: #134385;
+    border: none;
+    color: #fff;
+}
+#mainSlider, #venueSlider, #theirStorySlider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0px;
+    height: auto;
+    width: auto;
+}
+.royalSlider{
+    text-align: left;
+}
+#homeRow {
+    text-align: center;
+    display: block;
+    margin: 0px auto;
+    font-size:100%;
+    background-color: #88242C;
+    padding: 5.5% 3% 9%;
+}
+#homeRow .middle img{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+#homeRow .line-1,
+#homeRow .line-2,
+#homeRow .line-3,
+.wedding-date {
+    display: block;
+    text-align: justify;
+    width: 100%;
+    margin: 0px auto;
+    text-transform: uppercase;
+    font-family: arial;
+    white-space: nowrap;
+}
+#homeRow .line-1 {
+    font-size: 4.72vw;
+    font-weight: 700;
+    line-height: 88px;
+    margin-top: 70%;
+}
+#homeRow .line-2 {
+    font-size: 4.25vw;
+}
+#homeRow .line-3 {
+    font-size: 4.05vw;
+    font-weight: 700;
+    border-top: 5px solid #fff;
+    border-bottom: 5px solid #fff;
+}
+#homeRow .wedding-date {
+    font-size: 3.75vw;
+}
+.a-third {
+    max-width: 22.4%;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+img#leftImage, img#rightImage {
+    max-width: 100%;
+    height: auto;
+}
+.middle.a-third {
+    max-width: 20.08%;
+    position: relative;
+    margin: 0px 4%;
+}
+.outerBox {
+    background-color: #88242C;
+    padding: 4.55%;
+    border: 5px solid #000;
+    position: relative;
+    height: 575px;
+}
+
+#theirStory{
+    text-align: center;
+    display: block;
+    margin: 0px auto;
+    font-size:8em;
+    background-color: #8F3074;
+    padding: 5.5% 3% 9%;
+}
+#herStory.a-half, #hisStory.a-half {
+    max-width: 24%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #fff;
+    padding: 1.33%;
+    border: 4px solid #000;
+    position: relative;
+}
+.middle-half {
+    min-width: 20.45%;
+    display: inline-block;
+}
+img#herImage,img#hisImage {
+    max-width: 40.5%;
+    height: auto;
+    float: left;
+    padding: 5px .1em 5px 0px;
+}
+#herStoryContent, #hisStoryContent {
+    font-size: 22px;
+    text-align: left;
+}
+#theirStory .title {
+    padding: 0px;
+    margin: 0px auto;
+    line-height: .9em;
+    font-size: .6em;
+    text-align: left;
+    font-weight: 100;
+    font-family: Century Gothic;
+    z-index: 11;
+    position: relative;
+    width: 70%;
+}
+#titleImage {
+    position: absolute;
+    z-index: 0;
+    top: 20px;
+    width: 40%;
+    height: auto;
+    right: 0;
+}
+#hisStory #titleImage {
+    width:35%;
+    right:inherit;
+    left: 48%;
+}
+#ourStory{
+    text-align: center;
+    display: block;
+    margin: 0px auto;
+    font-size:8em;
+    background-color: #134385;
+    padding: 3.5% 3% 6%;
+    overflow: hidden;
+}
+#target {
+    margin: 0 auto;
+    max-width: 85% !important;
+    padding: .5%;
+    background-color: #fff;
+    border: 4px solid #000;
+}
+#target a {
+    border: 2px solid #000;
+}
+.photoMosaic {
+    margin-bottom: 0px !important;
+    background-color: #fff !important;
+}
+#ourStoryDescription {
+    font-size: 22px;
+    text-align: left;
+    max-width: 60%;
+    float: right;
+    margin-top: 5%;
+    border: 5px dashed #fff;
+    padding: 1%;
+}
+#ourStory .title {
+    font-size: 1em;
+    font-family: Century Gothic;
+    font-weight: 100;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 10% 0px 0px;
+    float: left;
+    position: relative;
+    z-index: 100;
+}
+#ourStorySlideOne {
+    display: block;
+    margin: 0px auto;
+    font-size:1.5em;
+    padding: 4.5% 2% 3%;
+    background-color: #48143A;
+    text-align: center;
+    position: relative;
+}
+#ourStorySlideOne p {
+    margin: 0px;
+}
+#ourStorySlideOne .line {
+    display: block;
+}
+#ourStorySlideOne .line.line-3,
+#ourStorySlideOne .line.line-4,
+#ourStorySlideOne .line.line-5,
+#ourStorySlideOne .line.line-6 {
+    display: inline-block;
+}
+#ourStorySlideOne .line.line-3:after {
+    content: ".";
+}
+#ourStorySlideOne .line.line-4:after {
+    content: ",";
+}
+#ourStorySlideOne .line.line-5:after {
+    content: ".";
+}
+#ourStorySlideOne .line.line-7:before {
+    content: "Phone: ";
+}
+#ourStorySlideOne .line a {
+    color: #fff;
+    text-decoration: inherit;
+}
+#ourStorySlideOne #ourWedding .line.line-3 {
+    display: block;
+}
+#ourStorySlideOne #venueImage {
+    max-width: 25%;
+    height: auto;
+}
+#ourHotel #venueImage {
+    max-width: 40%;
+    padding-bottom: 17px;
+}
+#ourStorySlideOne .title {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+#ourWedding #venueImage {
+    padding-bottom: 15px;
+    max-width: 55%;
+}
+
+#ourStorySlideOne .a-third#ourDinner {
+    margin: 0 7%;
+}
+#ourStorySlideOne .a-third {
+    padding: 2%;
+    border: 5px dashed #fff;
+    min-height: 300px;
+
+    position: relative;
+}
+#target {
+    /* visibility: hidden; */
+    max-height: 300px;
+    position: relative;
+}
+.wpgmza_map {
+    background-color: #000;
+}
+#ourVenueStory {
+    display: block;
+    margin: 0px auto;
+    font-size:1.5em;
+    padding: 4.5% 2% 3%;
+    background-color: #48143A;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+#ourVenueStory .line.line-1 {
+    max-width: 60%;
+    display: block;
+    border: 5px dashed #fff;
+    float: right;
+    padding: 2%;
+}
+#ourVenueStory .line.line-1 ul {
+    text-align: justify;
+}
+
+#ourVenueStory .title {
+    margin-top: 0px;
+}
+
+#ourVenueStory .line.line-1 ul li {
+    margin: 1em 0px;
+}
+#ourVenueStory .comicStyle {
+    position: absolute;
+    top: 33%;
+    left: 3.35%;
+    padding: 1%;
+    background-color: #fff;
+    border: 4px solid #000;
+}
+#ourVenueStory #venueImage {
+    border: 4px solid #000;
+}
+#ourRegistry {
+    display: block;
+    margin: 0px auto;
+    font-size:1.5em;
+    padding: 4.5% 2% 3%;
+    background-color: #2B645D;
+    position: relative;
+}
+#ourRegistry #description {
+    max-width: 100%;
+    display: block;
+    border: 5px dashed #fff;
+    padding: 4%;
+    position: relative;
+}
+#ourRegistry #description + a {
+    display: block;
+    height: auto;
+    margin: 40px auto 0;
+    text-align: center;
+    position: relative;
+}
+#ourRegistry #description + a img#myRegistyImage {
+    height: auto;
+    padding: 4%;
+    border: 5px dashed #fff;
+}
+#ourRegistry #aFewWords {
+    border: 5px dashed #fff;
+    padding: 4%;
+    display: block;
+    /* width: 40%; */
+    margin: 40px auto 0px;
+    position: relative;
+}
+#ourRegistry .a-half {
+    max-width: 30%;
+    display: inline-block;
+    vertical-align: text-top;
+}
+#registryHeader {
+    text-align: center;
+    margin: 3% 30% 8% 4%;
+}
+.a-fourth {
+    border: 5px dashed #fff;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 0px auto 40px;
+    padding: 2%;
+    text-align: center;
+    position: relative;
+}
+img.rsImg.registryImg{
+    max-width: 60%;
+    height: auto;
+    display: block;
+    text-align: center;
+    margin: 0px auto;
+    padding: 2%;
+}
+img#amazon-com-img {
+    max-width: 30%;
+}
+
+#ourRegistry .a-half#registryItems {
+    width: 30%;
+}
+#rsvpRow {
+    background-color: #E1AE45;
+    display: block;
+    margin: 0px auto;
+    font-size:1.5em;
+    padding: 4.5% 2% 7%;
+    position: relative;
+    text-align: center;
+}
+#rsvpRow p:first-child {
+    /* max-width: 50%; */
+    font-size: 2em;
+    display: block;
+    margin: auto;
+}
+#rsvpRow p:first-child + p {
+    display:none;
+}
+
+.rsvpParagraph {
+    display: block;
+    /* width: 50%; */
+    margin: 2% auto 2%;
+    font-size: 1.5em;
+}
+
+#rsvpPlugin {
+    display: block;
+    width: 100%;
+}
+
+#rsvpPlugin .rsvpParagraph {
+    display: block;
+    /* width: 50%; */
+    margin: 0% auto;
+    font-size: 1.5em;
+}
+#rsvpContent {
+    display: inline-block;
+    text-align: left;
+    padding: 4%;
+    border: 5px dashed #fff;
+    position: relative;
+}
+#kidsRow {
+    display: block;
+    margin: 0px auto;
+    /* font-size:8em; */
+    background-color: #88242C;
+    padding: 5.5% 3% 6%;
+    text-align: left;
+}
+#kidsRow .comicStyle {
+    text-align: left;
+    display: inline-block;
+    margin: 0px auto;
+    max-width: 21%;
+    padding: 2%;
+    background-color: #fff;
+    border: 4px solid #000;
+    position: relative;
+}
+
+#kidsRow img#kidsImg {
+    height: auto;
+    margin: auto;
+    vertical-align: middle;
+    display: block;
+    max-width: 100%;
+    border: 4px solid #000;
+    background-color: #fff;
+}
+#kidsRow .line.line-1 {
+    max-width: 60%;
+    display: inline-block;
+    font-size: 1.5em;
+    margin-left: 5%;
+    vertical-align: top;
+    padding: 4%;
+    border: 5px dashed #fff;
+    margin-top: 7%;
+}
+#herFullStoryRow, #hisFullStoryRow {
+    display: block;
+    margin: 0px auto;
+    background-color: #8F3074;
+    padding: 5.5% 3% 12%;
+    font-size: 1.2em;
+
+    line-height: 1em;
+}
+#herFullStory, #hisFullStory{
+    padding: 1% 2%;
+    border: 5px dashed #fff;
+    max-width: 50%;
+    margin: 0px auto;
+}
+#hisFullStoryRow {
+    padding: 13.5% 3% 19%;
+}
+.rsContent .rsContent + .rsContent {
+    visibility: hidden;
+}
+
+/*
+ * Dotted Lines
+*/
+
+.left.a-third:after , .right.a-third:after {
+    content:"";
+    border: 5px dashed #fff;
+    height:200px;
+    width: 0px;
+    display: block;
+    position: absolute;
+    bottom: auto;
+    right: 50%;
+    z-index: 9999;
+}
+
+#herStory:after {
+    content:"";
+    border: 5px dashed #fff;
+    height: 300px;
+    width: 0px;
+    display: block;
+    position: absolute;
+    bottom: auto;
+    right: 33.333%;
+    z-index: 9999;
+    transform: rotate(-45deg);
+}
+
+#hisStory:after {
+    content:"";
+    border: 5px dashed #fff;
+    height: 300px;
+    width: 0px;
+    display: block;
+    position: absolute;
+    bottom: auto;
+    left: 33.333%;
+    z-index: 9999;
+    transform: rotate(45deg);
+}
+
+#target:after {
+    content:"";
+    border: 5px dashed #fff;
+    height: 90px;
+    width: 0px;
+    display: block;
+    position: absolute;
+    bottom: auto;
+    right: 50%;
+    z-index: 9999;
+}
+
+#ourStorySlideOne .a-third:after {
+    content:"";
+    border-right: 5px dashed #fff;
+    height: 83px;
+    width: 133%;
+    display: block;
+    position: absolute;
+    top: -25%;
+    right: 50%;
+    z-index: 9999;
+}
+
+#ourStorySlideOne #ourHotel.a-third:after{
+    border-left: 5px dashed #fff;
+    right: inherit;
+    left: 50%;
+    width: 124%;
+    border-right: 0px;
+    border-bottom: 5px dashed #fff;
+    height: 8%;
+    bottom: -13%;
+    top: inherit;
+}
+
+#ourStorySlideOne #ourDinner.a-third:after{
+    border-top: 0px;
+    bottom: -13%;
+    height: 9%;
+    top: inherit;
+}
+#ourStorySlideOne #ourWedding.a-third:after {
+    border-bottom: 5px dashed #fff;
+    width: 142%;
+    height: 8%;
+    bottom: -13%;
+    top: inherit;
+}
+
+
+#ourStorySlideOne .a-third:before {
+    content:"";
+    border-right: 5px dashed #fff;
+    height: 83px;
+    width: 133%;
+    display: block;
+    position: absolute;
+    top: -25%;
+    right: 50%;
+    z-index: 9999;
+}
+
+#ourStorySlideOne #ourHotel.a-third:before{
+    border-left: 5px dashed #fff;
+    right: inherit;
+    left: 50%;
+    width: 124%;
+    border-right: 0px;
+    border-top: 5px dashed #fff;
+    height: 12%;
+    top: -18%;
+}
+
+#ourStorySlideOne #ourDinner.a-third:before{
+    border-top: 0px;
+    top: -37%;
+    height: 35%;
+}
+#ourStorySlideOne #ourWedding.a-third:before {
+    border-top:5px dashed #fff;
+    width: 142%;
+    height: 12%;
+    top: -18%;
+}
+
+
+
+#ourRegistry #registryHeader #description:before {
+    content:"";
+    border-right: 5px dashed #fff;
+    height: 80%;
+    width: 133%;
+    display: block;
+    position: absolute;
+    top: -90%;
+    right: 50%;
+    z-index: 9999;
+}
+
+#ourRegistry #description + a:before {
+    content:"";
+    border-right: 5px dashed #fff;
+    height: 10%;
+    width: 133%;
+    display: block;
+    position: absolute;
+    top: -13%;
+    right: 50%;
+    z-index: 9999;
+}
+
+#ourRegistry #registryHeader #aFewWords:before {
+    content:"";
+    border-right: 5px dashed #fff;
+    height: 20%;
+    width: 133%;
+    display: block;
+    position: absolute;
+    top: -37%;
+    right: 50%;
+    z-index: 9999;
+}
+
+#ourRegistry #registryHeader #aFewWords:after {
+    content:"";
+    border-top:5px dashed #fff;
+    position: absolute;
+    right: -123%;
+    top: -260%;
+    width: 39vw;
+    float: none;
+    text-align: right;
+    transform: rotate(-45deg);
+}
+
+#ourRegistry #crate-barrel:after {
+    content:"";
+    border-left: 5px dashed #fff;
+    right: inherit;
+    left: 50%;
+    width: 0%;
+    border-right: 0px;
+    height: 43%;
+    bottom: -50%;
+    top: inherit;
+    position: absolute;
+}
+
+#ourRegistry #macys:after {
+    content:"";
+    border-left: 5px dashed #fff;
+    right: inherit;
+    left: 50%;
+    width: 0%;
+    border-right: 0px;
+    height: 30%;
+    bottom: -36%;
+    top: inherit;
+    position: absolute;
+}
+
+#ourRegistry #amazon-com:after {
+    content:"";
+    border-left: 5px dashed #fff;
+    right: inherit;
+    left: 50%;
+    width: 0%;
+    border-right: 0px;
+    height: 20%;
+    bottom: -23%;
+    top: inherit;
+    position: absolute;
+}
+
+#ourRegistry #sur-la-table:after {
+    content:"";
+    border-left: 5px dashed #fff;
+    right: inherit;
+    left: 28%;
+    width: 0%;
+    border-right: 0px;
+    height: 17vw;
+    bottom: inherit;
+    top: 4vw;
+    position: absolute;
+    transform: rotate(45deg);
+    z-index:999;
+}
+
+#rsvpRow #rsvpContent:after {
+    content:"";
+    border-left: 5px dashed #fff;
+    right: inherit;
+    left: 18%;
+    width: 0%;
+    border-right: 0px;
+    height: 17vw;
+    bottom: -15vw;
+    top: inherit;
+    position: absolute;
+    transform: rotate(45deg);
+    z-index:999;
+}
+
+#kidsRow .comicStyle:after {
+    content:"";
+    border-top: 5px dashed #fff;
+    right: -4.5vw;
+    left: inherit;
+    bottom: -15vw;
+    top: 50%;
+    position: absolute;
+    z-index:999;
+    height: 0;
+    width: 4vw;
+}
+
+@media (max-width: 1679px) {
+    #homeRow {
+        text-align: center;
+        display: block;
+        margin: 0px auto;
+        font-size:100%;
+        background-color: #88242C;
+        padding: 5.5% 3% 6%;
+    }
+    #homeRow .middle img{
+        max-width: 100%;
+        height: auto;
+    }
+    #homeRow .line-1,
+    #homeRow .line-2,
+    #homeRow .line-3,
+    .wedding-date {
+        display: block;
+        text-align: justify;
+        width: 100%;
+        margin: 0px auto;
+        text-transform: uppercase;
+        font-family: arial;
+        white-space: nowrap;
+    }
+    #homeRow .line-1 {
+        font-size: 5.7vw;
+        font-weight: 700;
+        line-height: 88px;
+        margin-top: 70%;
+    }
+    #homeRow .line-2 {
+        font-size: 5.1vw;
+    }
+    #homeRow .line-3 {
+        font-size: 4.9vw;
+        font-weight: 700;
+        border-top: 5px solid #fff;
+        border-bottom: 5px solid #fff;
+    }
+    #homeRow .wedding-date {
+        font-size: 4.5vw;
+    }
+    .a-third {
+        max-width: 23.4%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    img#leftImage, img#rightImage {
+        max-width: 100%;
+        height: auto;
+    }
+    .middle.a-third {
+        max-width: 24.08%;
+        position: relative;
+    }
+    .outerBox {
+        background-color: #88242C;
+        padding: 4.55%;
+        border: 5px solid #000;
+        position: relative;
+        height: 575px;
+    }
+}

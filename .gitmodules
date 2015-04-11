@@ -1,0 +1,3 @@
+[submodule "plugins/pods-json-api"]
+	path = plugins/pods-json-api
+	url = https://github.com/pods-framework/pods-json-api.git
