@@ -765,6 +765,28 @@ img#amazon-com-img {
     width: 4vw;
 }
 
+/*
+ *
+ *  PassWord Protect
+ *
+ */
+.protectQuiet p {
+    font-size: 3vw;
+}
+
+form.protectQuiet {
+    padding: 5.5% 3% 9%;
+}
+
+.protectQuiet p input {
+    font-size: 2vw;
+}
+
+.iexp #theirStorySlider .rsContainer,
+.iexp #venueSlider .rsContainer{
+    touch-action: pan-x !important;
+}
+
 @media (max-width: 1679px) {
     #homeRow {
         text-align: center;

@@ -10,7 +10,9 @@
  * @package barebones
  */
 
-get_header(); ?>
+get_header();
+
+?>
 
     <div id="mainSlider" class="royalSlider rsDefault">
 
@@ -33,10 +35,17 @@ get_header(); ?>
         ?>
 
         <div class="rsContent">
+            <?php //$content = get_the_content(); ?>
+            <?php $the_post_ID = get_the_ID(); ?>
+            <?php $post = get_post($the_post_ID); ?>
             <?php while ( $home_content->have_posts() ) : $home_content->the_post(); ?>
                 <?php get_template_part( 'content', 'home' ); ?>
             <?php endwhile; // end of the loop. ?>
         </div>
+
+        <?php if(!post_password_required($post)): ?>
+
+
 
         <?php
 
@@ -71,6 +80,8 @@ get_header(); ?>
                             imageScaleMode: 'none',
                             imageAlignCenter: !1,
                             navigateByClick: false,
+                            sliderTouch: false,
+                            sliderDrag: false,
                             startSlideId:1
                         });
                         var theirSlider = $("#theirStorySlider").data('royalSlider');
@@ -248,7 +259,9 @@ get_header(); ?>
                             autoHeight: false,
                             imageScaleMode: 'none',
                             imageAlignCenter: !1,
-                            navigateByClick: false
+                            navigateByClick: false,
+                            sliderTouch: false,
+                            sliderDrag: false
                         });
                     });
                 });
@@ -425,6 +438,8 @@ get_header(); ?>
                 <?php endwhile; // end of the loop. ?>
             </div>
         </div>
+
+        <?php endif; ?>
 
     </div><!-- #main -->
 

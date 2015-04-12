@@ -9,7 +9,7 @@
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
-	$content_width = 640; /* pixels */
+	$content_width = 1280; /* pixels */
 }
 
 if ( ! function_exists( 'barebones_setup' ) ) :
@@ -31,7 +31,7 @@ function barebones_setup() {
 	load_theme_textdomain( 'barebones', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+	//add_theme_support( 'automatic-feed-links' );
 
 	/*
 	 * Let WordPress manage the document title.
@@ -64,16 +64,20 @@ function barebones_setup() {
 	/*
 	 * Enable support for Post Formats.
 	 * See http://codex.wordpress.org/Post_Formats
-	 */
+
 	add_theme_support( 'post-formats', array(
 		'aside', 'image', 'video', 'quote', 'link',
 	) );
 
-	// Set up the WordPress core custom background feature.
+	*/
+
+	/* Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'barebones_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	*/
 }
 endif; // barebones_setup
 add_action( 'after_setup_theme', 'barebones_setup' );
@@ -82,7 +86,7 @@ add_action( 'after_setup_theme', 'barebones_setup' );
  * Register widget area.
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- */
+ *
 function barebones_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Sidebar', 'barebones' ),
@@ -95,12 +99,15 @@ function barebones_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'barebones_widgets_init' );
+*/
 
 /**
  * Enqueue scripts and styles.
  */
 function barebones_scripts() {
 	wp_enqueue_style( 'barebones-style', get_stylesheet_uri() );
+
+    /*
 
 	wp_enqueue_script( 'barebones-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
@@ -109,6 +116,7 @@ function barebones_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+    */
 }
 add_action( 'wp_enqueue_scripts', 'barebones_scripts' );
 
@@ -120,7 +128,7 @@ add_action( 'wp_enqueue_scripts', 'barebones_scripts' );
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+//require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Custom functions that act independently of the theme templates.
@@ -130,9 +138,22 @@ require get_template_directory() . '/inc/extras.php';
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+//require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
-require get_template_directory() . '/inc/jetpack.php';
+//require get_template_directory() . '/inc/jetpack.php';
+
+function my_password_form() {
+    global $post;
+    $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+    $o = '<form class="rsNoDrag protectQuiet" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
+    <p>' . __( "Amy & Lee cherish their privacy and yours.  Please log in using the Password Provided with your Save the Date:" ) . '</p>
+    <p><label for="' . $label . '">' . __( "Password:" ) . ' </label><input name="post_password" id="' . $label . '" type="password" placeholder="Enter your password here :)" size="24" maxlength="24" /><input type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '" /></p>
+    </form>
+    ';
+    return $o;
+}
+add_filter( 'the_password_form', 'my_password_form' );
+
