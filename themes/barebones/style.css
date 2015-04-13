@@ -15,9 +15,109 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 barebones is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
 
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
-*/
+/**
+ * 1.0 - Reset
+ *
+ * Resetting and rebuilding styles have been helped along thanks to the fine work of
+ * Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+ * along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+ * and Blueprint http://www.blueprintcss.org/
+ */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    background: #f1f1f1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+    display: block;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+caption,
+th,
+td {
+    font-weight: normal;
+    text-align: left;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+}
+
+blockquote,
+q {
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    quotes: none;
+}
+
+a:focus {
+    outline: 2px solid #c1c1c1;
+    outline: 2px solid rgba(51, 51, 51, 0.3);
+}
+
+a:hover,
+a:active {
+    outline: 0;
+}
+
+a img {
+    border: 0;
+}
+
 
 html, body {
     width: 100%;
@@ -58,6 +158,7 @@ input[type="submit"] {
     margin: 0px auto;
     font-size:100%;
     background-color: #88242C;
+    height: 100vh;
     padding: 5.5% 3% 9%;
 }
 #homeRow .middle img{
@@ -110,21 +211,30 @@ img#leftImage, img#rightImage {
     position: relative;
     margin: 0px 4%;
 }
+
+/*
+ *
+ * Start Their Story
+ *
+ */
+
 .outerBox {
     background-color: #88242C;
     padding: 4.55%;
     border: 5px solid #000;
     position: relative;
-    height: 575px;
+    height: 66vh;
 }
 
 #theirStory{
     text-align: center;
     display: block;
     margin: 0px auto;
-    font-size:8em;
     background-color: #8F3074;
     padding: 5.5% 3% 9%;
+    font-size: 2.2vmin;
+    line-height: normal;
+    height: 100vh;
 }
 #herStory.a-half, #hisStory.a-half {
     max-width: 24%;
@@ -138,6 +248,7 @@ img#leftImage, img#rightImage {
 .middle-half {
     min-width: 20.45%;
     display: inline-block;
+    position: relative;
 }
 img#herImage,img#hisImage {
     max-width: 40.5%;
@@ -146,14 +257,13 @@ img#herImage,img#hisImage {
     padding: 5px .1em 5px 0px;
 }
 #herStoryContent, #hisStoryContent {
-    font-size: 22px;
     text-align: left;
 }
 #theirStory .title {
     padding: 0px;
-    margin: 0px auto;
+    margin: 0px auto 3vh;
     line-height: .9em;
-    font-size: .6em;
+    font-size: 3.33em;
     text-align: left;
     font-weight: 100;
     font-family: Century Gothic;
@@ -163,17 +273,24 @@ img#herImage,img#hisImage {
 }
 #titleImage {
     position: absolute;
-    z-index: 0;
-    top: 20px;
-    width: 40%;
+    z-index: -1;
+    top: -15vh;
+    max-width: 15vw;
     height: auto;
-    right: 0;
+    left: 5vw;
 }
 #hisStory #titleImage {
     width:35%;
     right:inherit;
     left: 48%;
 }
+
+/*
+ *
+ * Start Our Story
+ *
+ */
+
 #ourStory{
     text-align: center;
     display: block;
@@ -182,10 +299,11 @@ img#herImage,img#hisImage {
     background-color: #134385;
     padding: 3.5% 3% 6%;
     overflow: hidden;
+    height: 100vh;
 }
 #target {
     margin: 0 auto;
-    max-width: 85% !important;
+    max-width: 85vw !important;
     padding: .5%;
     background-color: #fff;
     border: 4px solid #000;
@@ -198,7 +316,6 @@ img#herImage,img#hisImage {
     background-color: #fff !important;
 }
 #ourStoryDescription {
-    font-size: 22px;
     text-align: left;
     max-width: 60%;
     float: right;
@@ -207,24 +324,26 @@ img#herImage,img#hisImage {
     padding: 1%;
 }
 #ourStory .title {
-    font-size: 1em;
+    font-size: 12vmin;
     font-family: Century Gothic;
     font-weight: 100;
     background-repeat: no-repeat;
-    display: inline-block;
-    margin: 10% 0px 0px;
-    float: left;
+    display: block;
+    text-align: left;
     position: relative;
     z-index: 100;
+    margin-top: 20vh;
 }
+
 #ourStorySlideOne {
     display: block;
     margin: 0px auto;
-    font-size:1.5em;
+    font-size: 1vmax;
     padding: 4.5% 2% 3%;
     background-color: #48143A;
     text-align: center;
     position: relative;
+    height: 50vh;
 }
 #ourStorySlideOne p {
     margin: 0px;
@@ -281,15 +400,11 @@ img#herImage,img#hisImage {
 #ourStorySlideOne .a-third {
     padding: 2%;
     border: 5px dashed #fff;
-    min-height: 300px;
+    height: 33.33vh;
 
     position: relative;
 }
-#target {
-    /* visibility: hidden; */
-    max-height: 300px;
-    position: relative;
-}
+
 .wpgmza_map {
     background-color: #000;
 }
@@ -335,10 +450,11 @@ img#herImage,img#hisImage {
 #ourRegistry {
     display: block;
     margin: 0px auto;
-    font-size:1.5em;
+    font-size: 3.5vmin;
     padding: 4.5% 2% 3%;
     background-color: #2B645D;
     position: relative;
+    height: 100vh;
 }
 #ourRegistry #description {
     max-width: 100%;
@@ -350,7 +466,7 @@ img#herImage,img#hisImage {
 #ourRegistry #description + a {
     display: block;
     height: auto;
-    margin: 40px auto 0;
+    margin: 3vh auto 0;
     text-align: center;
     position: relative;
 }
@@ -358,17 +474,17 @@ img#herImage,img#hisImage {
     height: auto;
     padding: 4%;
     border: 5px dashed #fff;
+    max-width: 100%;
 }
 #ourRegistry #aFewWords {
     border: 5px dashed #fff;
     padding: 4%;
     display: block;
-    /* width: 40%; */
-    margin: 40px auto 0px;
+    margin: 3vh auto 0px;
     position: relative;
 }
 #ourRegistry .a-half {
-    max-width: 30%;
+    max-width: 30vw;
     display: inline-block;
     vertical-align: text-top;
 }
@@ -399,16 +515,17 @@ img#amazon-com-img {
 }
 
 #ourRegistry .a-half#registryItems {
-    width: 30%;
+    width: 30vw;
 }
 #rsvpRow {
     background-color: #E1AE45;
     display: block;
     margin: 0px auto;
-    font-size:1.5em;
+    font-size: 2.5vmin;
     padding: 4.5% 2% 7%;
     position: relative;
     text-align: center;
+    height: 100vh;
 }
 #rsvpRow p:first-child {
     /* max-width: 50%; */
@@ -417,7 +534,9 @@ img#amazon-com-img {
     margin: auto;
 }
 #rsvpRow p:first-child + p {
-    display:none;
+    /* display:none; */
+    font-size: 2vmax;
+    margin-top: 1vw;
 }
 
 .rsvpParagraph {
@@ -448,16 +567,17 @@ img#amazon-com-img {
 #kidsRow {
     display: block;
     margin: 0px auto;
-    /* font-size:8em; */
     background-color: #88242C;
     padding: 5.5% 3% 6%;
     text-align: left;
+    height: 100vh;
+    font-size: 2vmin;
 }
 #kidsRow .comicStyle {
     text-align: left;
     display: inline-block;
     margin: 0px auto;
-    max-width: 21%;
+    max-width: 24vw;
     padding: 2%;
     background-color: #fff;
     border: 4px solid #000;
@@ -497,21 +617,24 @@ img#amazon-com-img {
     border: 5px dashed #fff;
     max-width: 50%;
     margin: 0px auto;
+    font-size: 2.25vmin;
+    line-height: normal;
 }
 #hisFullStoryRow {
     padding: 13.5% 3% 19%;
 }
+/*
 .rsContent .rsContent + .rsContent {
     visibility: hidden;
 }
-
+*/
 /*
  * Dotted Lines
 */
 
 .left.a-third:after , .right.a-third:after {
     content:"";
-    border: 5px dashed #fff;
+    border-left: 5px dashed #fff;
     height:200px;
     width: 0px;
     display: block;
@@ -523,7 +646,7 @@ img#amazon-com-img {
 
 #herStory:after {
     content:"";
-    border: 5px dashed #fff;
+    border-left: 5px dashed #fff;
     height: 300px;
     width: 0px;
     display: block;
@@ -536,7 +659,7 @@ img#amazon-com-img {
 
 #hisStory:after {
     content:"";
-    border: 5px dashed #fff;
+    border-left: 5px dashed #fff;
     height: 300px;
     width: 0px;
     display: block;
@@ -549,8 +672,8 @@ img#amazon-com-img {
 
 #target:after {
     content:"";
-    border: 5px dashed #fff;
-    height: 90px;
+    border-left: 5px dashed #fff;
+    height: 100vh;
     width: 0px;
     display: block;
     position: absolute;
@@ -662,11 +785,11 @@ img#amazon-com-img {
 #ourRegistry #registryHeader #aFewWords:before {
     content:"";
     border-right: 5px dashed #fff;
-    height: 20%;
-    width: 133%;
+    height: 2vh;
+    width: 0;
     display: block;
     position: absolute;
-    top: -37%;
+    top: -3.5vh;
     right: 50%;
     z-index: 9999;
 }
@@ -675,9 +798,9 @@ img#amazon-com-img {
     content:"";
     border-top:5px dashed #fff;
     position: absolute;
-    right: -123%;
-    top: -260%;
-    width: 39vw;
+    right: -35vw;
+    top: -15vw;
+    width: 40vw;
     float: none;
     text-align: right;
     transform: rotate(-45deg);
@@ -771,7 +894,7 @@ img#amazon-com-img {
  *
  */
 .protectQuiet p {
-    font-size: 3vw;
+    font-size: 3em;
 }
 
 form.protectQuiet {
@@ -779,7 +902,7 @@ form.protectQuiet {
 }
 
 .protectQuiet p input {
-    font-size: 2vw;
+    font-size: 2em;
 }
 
 .iexp #theirStorySlider .rsContainer,
@@ -787,67 +910,106 @@ form.protectQuiet {
     touch-action: pan-x !important;
 }
 
-@media (max-width: 1679px) {
-    #homeRow {
-        text-align: center;
-        display: block;
-        margin: 0px auto;
-        font-size:100%;
-        background-color: #88242C;
-        padding: 5.5% 3% 6%;
-    }
-    #homeRow .middle img{
-        max-width: 100%;
-        height: auto;
-    }
-    #homeRow .line-1,
-    #homeRow .line-2,
-    #homeRow .line-3,
-    .wedding-date {
-        display: block;
-        text-align: justify;
-        width: 100%;
-        margin: 0px auto;
-        text-transform: uppercase;
-        font-family: arial;
-        white-space: nowrap;
-    }
-    #homeRow .line-1 {
-        font-size: 5.7vw;
-        font-weight: 700;
-        line-height: 88px;
-        margin-top: 70%;
-    }
-    #homeRow .line-2 {
-        font-size: 5.1vw;
-    }
-    #homeRow .line-3 {
-        font-size: 4.9vw;
-        font-weight: 700;
-        border-top: 5px solid #fff;
-        border-bottom: 5px solid #fff;
-    }
-    #homeRow .wedding-date {
-        font-size: 4.5vw;
-    }
-    .a-third {
-        max-width: 23.4%;
-        display: inline-block;
-        vertical-align: middle;
-    }
-    img#leftImage, img#rightImage {
-        max-width: 100%;
-        height: auto;
-    }
-    .middle.a-third {
-        max-width: 24.08%;
-        position: relative;
-    }
-    .outerBox {
-        background-color: #88242C;
-        padding: 4.55%;
-        border: 5px solid #000;
-        position: relative;
-        height: 575px;
+#herFullStoryRow .go-back {
+    background-color: #134385;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    padding: 2%;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: arial;
+    position: absolute;
+    right: 5%;
+    top: 40%;
+}
+
+#hisFullStoryRow .go-back {
+    background-color: #134385;
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    padding: 2%;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: arial;
+    position: absolute;
+    left: 5%;
+    top: 40%;
+}
+.hidden {
+    display: none;
+}
+#theirStorySlider .rsContent {
+    position: absolute;
+    visibility: visible;
+}
+
+#theirStorySlider .rsContent:first-child {
+    left: -100%;
+}
+
+#theirStorySlider .rsContent:last-child {
+    right: -100%;
+}
+
+#theirStorySlider .normalize.rsContent {
+    position: inherit;
+    visibility: visible;
+}
+
+#theirStorySlider .normalize.rsContent:first-child {
+    left: auto;
+}
+
+#theirStorySlider .normalize.rsContent:last-child {
+    right: auto;
+}
+
+img#logo {
+    max-width: 100%;
+    height: auto;
+}
+#theirStory span#logo-box {
+    max-width: 20.08vw;
+}
+#ourStory span#logo-box {
+    max-width: 25vw;
+    right: 3vw;
+    left: auto;
+    bottom: 5.5vh;
+    top: auto;
+}
+#ourStorySlideOne span#logo-box {
+    max-width: 21vw;
+    top: 12vh;
+    left: -50vw;
+}
+#ourRegistry span#logo-box {
+    max-width: 21vw;
+    top: 60.67vh;
+    left: 40.08vw;
+}
+#rsvpRow span#logo-box {
+    max-width: 19vw;
+    left: auto;
+    right: 2vw;
+    bottom: 2vw;
+    top: auto;
+}
+#kidsRow span#logo-box {
+    max-width: 16vw;
+    right: auto;
+    left: 42.5vw;
+    top: 1vh;
+}
+
+@media (max-width: 1600px){
+    #ourStory span#logo-box {
+        max-width: 25vw;
+        right: 3vw;
+        left: auto;
+        bottom: 0vh;
+        top: auto;
     }
 }

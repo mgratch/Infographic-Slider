@@ -13,7 +13,7 @@
 get_header();
 
 ?>
-
+<?php my_nav(); ?>
     <div id="mainSlider" class="royalSlider rsDefault">
 
         <?php
@@ -68,36 +68,57 @@ get_header();
         <div class="rsContent">
             <script>
                 jQuery(window).load(function() {
-                    var $ = jQuery;
-                    var slider = $("#mainSlider").data('royalSlider');
-                    slider.ev.on('rsAfterSlideChange', function(event) {
-                        $("#theirStorySlider").royalSlider({
-                            // options go here
-                            // as an example, enable keyboard arrows nav
-                            slidesOrientation: 'horizontal',
-                            autoScaleSlider: false,
-                            autoHeight: false,
-                            imageScaleMode: 'none',
-                            imageAlignCenter: !1,
-                            navigateByClick: false,
-                            sliderTouch: false,
-                            sliderDrag: false,
-                            startSlideId:1
+                    if (window.location.href.slice(-1) != "2"){
+                        var $ = jQuery;
+                        var slider = $("#mainSlider").data('royalSlider');
+                        slider.ev.on('rsBeforeMove', function(event, type, userAction ) {
+                            $("#theirStorySlider").royalSlider({
+                                // options go here
+                                // as an example, enable keyboard arrows nav
+                                slidesOrientation: 'horizontal',
+                                controlNavigation: 'none',
+                                autoScaleSlider: false,
+                                imageScaleMode: 'none',
+                                imageAlignCenter: !1,
+                                navigateByClick: false,
+                                sliderTouch: false,
+                                sliderDrag: false,
+                                fadeinLoadedSlide: false,
+                                slidesSpacing: 0,
+                                allowCSS3: false,
+                                minSlideOffset:0,
+                                imageScalePadding: 0,
+                                startSlideId:1
+                            });
+                            var theirSlider = $("#theirStorySlider").data('royalSlider');
+                            $("#herStory a.more-link").on('click',function(e){
+                                e.preventDefault();
+                                theirSlider.goTo(0);
+                            });
+                            $("#hisStory a.more-link").on('click',function(e){
+                                e.preventDefault();
+                                theirSlider.goTo(2);
+                            });
+                            $("#herFullStoryRow a.go-back").on('click',function(e){
+                                e.preventDefault();
+                                theirSlider.goTo(1);
+                            });
+                            $("#hisFullStoryRow .go-back").on('click',function(e){
+                                e.preventDefault();
+                                theirSlider.goTo(1);
+                            });
+                            var slider = $('#theirStorySlider');
+                            var rsContent = $(slider).find('.rsContent');
+                            $(rsContent).each(function() {
+                                $(this).addClass('normalize');
+                            });
                         });
-                        var theirSlider = $("#theirStorySlider").data('royalSlider');
-                        $("#herStory a.more-link").on('click',function(e){
-                            e.preventDefault();
-                            theirSlider.prev();
-                        });
-                        $("#hisStory a.more-link").on('click',function(e){
-                            e.preventDefault();
-                            theirSlider.next();
-                        });
-                    });
+                    }
                 });
             </script>
             <div id="theirStorySlider" class="royalSlider rsDefault">
                 <div class="rsContent">
+                    <span class="rsImgHash hidden">their-story</span>
                     <div id="herFullStoryRow">
                         <?php
 
@@ -120,7 +141,7 @@ get_header();
                         <?php global $more; $more = -1; ?>
 
                             <div id="herFullStory"><?php the_content(); ?></div>
-
+                            <a class="go-back" href="#" ><?php echo __('Go Back &#9658;','barebones'); ?></a>
                         <?php endwhile; // end of the loop. ?>
                     </div>
                 </div>
@@ -133,7 +154,14 @@ get_header();
 
                             <?php endwhile; // end of the loop. ?>
                         </div>
-                        <div class="middle-half"></div>
+                        <div class="middle-half">
+                            <?php
+                            $home_ID = 15;
+                            $logo = get_post_meta($home_ID,'logo',true);
+                            $logo = wp_get_attachment_image_src($logo['ID'], 'large',false);
+                            ?>
+                            <span id="logo-box" class="rsABlock" data-move-effect="top" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
+                        </div>
 
                         <?php
 
@@ -184,6 +212,7 @@ get_header();
                             <?php global $more; $more = -1; ?>
 
                             <div id="hisFullStory"><?php the_content(); ?></div>
+                            <a class="go-back" href="#" ><?php echo __('&#9668; Go Back','barebones'); ?></a>
 
                         <?php endwhile; // end of the loop. ?>
                     </div>
@@ -211,6 +240,7 @@ get_header();
         ?>
 
        <div class="rsContent">
+           <span class="rsImgHash hidden">our-story</span>
            <script>
                jQuery(window).load(function() {
                    var $ = jQuery;
@@ -246,6 +276,7 @@ get_header();
 
         ?>
         <div class="rsContent">
+            <span class="rsImgHash hidden">venues</span>
             <script>
                 jQuery(window).load(function() {
                     var $ = jQuery;
@@ -255,13 +286,18 @@ get_header();
                             // options go here
                             // as an example, enable keyboard arrows nav
                             slidesOrientation: 'horizontal',
+                            controlNavigation: 'none',
                             autoScaleSlider: false,
-                            autoHeight: false,
                             imageScaleMode: 'none',
                             imageAlignCenter: !1,
                             navigateByClick: false,
                             sliderTouch: false,
-                            sliderDrag: false
+                            sliderDrag: false,
+                            fadeinLoadedSlide: false,
+                            slidesSpacing: 0,
+                            allowCSS3: false,
+                            minSlideOffset:0,
+                            imageScalePadding: 0
                         });
                     });
                 });
@@ -269,7 +305,8 @@ get_header();
             <div id="venueSlider" class="royalSlider rsDefault">
                 <div class="rsContent">
                     <div id="ourStorySlideOne">
-                        <div class='a-third' id="ourHotel">
+                        <span id="logo-box" class="rsABlock" data-move-effect="right" data-move-offset="3000" data-speed="3000" data-delay="200" data-fade-effect="false" ><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
+                        <div class='a-third rsNoDrag' id="ourHotel">
                             <?php while ( $accomadation_content->have_posts() ) : $accomadation_content->the_post(); ?>
                                 <?php get_template_part( 'content', 'accomodation' ); ?>
                             <?php endwhile; // end of the loop. ?>
@@ -315,7 +352,7 @@ get_header();
                         $the_wedding_content = new WP_Query( $args );
 
                         ?>
-                        <div class='a-third' id="ourWedding">
+                        <div class='a-third rsNoDrag' id="ourWedding">
                             <?php while ( $the_wedding_content->have_posts() ) : $the_wedding_content->the_post(); ?>
                                 <?php get_template_part( 'content', 'the-wedding' ); ?>
                             <?php endwhile; // end of the loop. ?>
@@ -341,7 +378,7 @@ get_header();
 
                 ?>
                 <div class="rsContent">
-                    <div id="ourVenueStory">
+                    <div id="ourVenueStory rsNoDrag">
                         <?php while ( $our_venue_content->have_posts() ) : $our_venue_content->the_post(); ?>
                             <?php get_template_part( 'content', 'our-venue' ); ?>
                         <?php endwhile; // end of the loop. ?>
@@ -353,14 +390,16 @@ get_header();
         <?php // start registry section ?>
 
        <div class="rsContent">
+           <span class="rsImgHash hidden">registry</span>
            <div id="ourRegistry">
+               <span id="logo-box" class="rsABlock" data-move-effect="bottom" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
                <div id="registryHeader" class="a-half">
                    <?php $registry_head_image = get_option('our_registry_heading_image'); $registry_head_image = wp_get_attachment_image_src($registry_head_image[0],'full',false); ?>
-                   <span id="description" class="line-1"><?php echo do_shortcode(get_option('our_registry_heading_description')); ?></span>
-                   <a href="<?php echo do_shortcode(get_option('our_registry_heading_link_to_registry')); ?>" target="_blank">
+                   <span id="description" class="line-1 line"><?php echo do_shortcode(get_option('our_registry_heading_description')); ?></span>
+                   <a class="line" href="<?php echo do_shortcode(get_option('our_registry_heading_link_to_registry')); ?>" target="_blank">
                        <img id="myRegistyImage" class="rsImg" src="<?php echo $registry_head_image[0]; ?>" width="<?php echo $registry_head_image[1]; ?>" height="<?php echo $registry_head_image[2] ?>" data-rsw="<?php echo $registry_head_image[1]; ?>" data-rsh="<?php echo $registry_head_image[2] ?>" />
                    </a>
-                   <span id="aFewWords" class="line-2"><?php echo get_option('our_registry_heading_a_few_words'); ?></span>
+                   <span id="aFewWords" class="line-2 line"><?php echo get_option('our_registry_heading_a_few_words'); ?></span>
                </div>
 
                 <?php
@@ -407,7 +446,9 @@ get_header();
         ?>
 
         <div class="rsContent">
+            <span class="rsImgHash hidden">rsvp</span>
             <div id="rsvpRow">
+                <span id="logo-box" class="rsABlock" data-move-effect="top" data-move-offset="1000"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
                 <?php while ( $rsvp_page_content->have_posts() ) : $rsvp_page_content->the_post(); ?>
                     <?php get_template_part( 'content', 'rsvp-page' ); ?>
                 <?php endwhile; // end of the loop. ?>
@@ -432,7 +473,9 @@ get_header();
 
         ?>
         <div class="rsContent">
+            <span class="rsImgHash hidden">bring-your-kids</span>
             <div id="kidsRow">
+                <span id="logo-box" class="rsABlock" data-move-effect="top" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
                 <?php while ( $kids_page_content->have_posts() ) : $kids_page_content->the_post(); ?>
                     <?php get_template_part( 'content', 'kids-page' ); ?>
                 <?php endwhile; // end of the loop. ?>

@@ -14,13 +14,17 @@
 function gallery_script_and_styles()
 {
 	wp_enqueue_style('prettyPhotoStyles', get_template_directory_uri() . '/photoMosaic/includes/prettyphoto/prettyphoto.css');
-	wp_enqueue_script('prettyPhoto', get_template_directory_uri() . '/photoMosaic/includes/prettyphoto/jquery.prettyPhoto.js', array('jquery'), FALSE, FALSE);
+    wp_enqueue_style('royalsliderDefault', get_template_directory_uri() . '/css/default/rs-default.css');
 	wp_enqueue_style('photoMosaicStyles', get_template_directory_uri() . '/photoMosaic/css/photomosaic.css');
+    wp_enqueue_style('navStyle', get_template_directory_uri() . '/assets/css/menu.css');
+    //wp_enqueue_style('fontawesome', get_template_directory_uri() . '/assets/font-awesome/css/font-awesome.css');
+    //wp_enqueue_style('google_font', "'http://fonts.googleapis.com/css?family=Dosis");
+    wp_enqueue_style('royalsliderStyle', get_template_directory_uri() . '/css/royalslider.css');
+    wp_enqueue_style('royalsliderDefault', get_template_directory_uri() . '/css/default/rs-default.css');    wp_enqueue_script('prettyPhoto', get_template_directory_uri() . '/photoMosaic/includes/prettyphoto/jquery.prettyPhoto.js', array('jquery'), FALSE, FALSE);
 	wp_enqueue_script('photomosaic', get_template_directory_uri() . '/photoMosaic/js/photomosaic.min.js', array('jquery'), FALSE, FALSE);
 	wp_enqueue_script('functions', get_template_directory_uri() . '/photoMosaic/js/functions.js', array('jquery-mousewheel','photomosaic','royalSliderJS'), FALSE, FALSE);
-	wp_enqueue_style('royalsliderStyle', get_template_directory_uri() . '/css/royalslider.css');
-	wp_enqueue_style('royalsliderDefault', get_template_directory_uri() . '/css/default/rs-default.css');
 	wp_enqueue_script('royalSliderJS', get_template_directory_uri() . '/js/jquery.royalslider.custom.min.js', array('jquery'), FALSE, FALSE);
+    //wp_enqueue_script('rsDeepLinking', get_template_directory_uri() . '/js/jquery.royalslider.deeplinking.js', array('jquery','royalSliderJS'), FALSE, FALSE);
     wp_enqueue_script('jquery-mousewheel', get_template_directory_uri() . '/js/jquery-mousewheel.js', array('jquery'), FALSE, FALSE);
 }
 add_action( 'wp_enqueue_scripts', 'gallery_script_and_styles',11 );
@@ -103,23 +107,19 @@ function fix_my_gallery_wpse43558($output, $attr) {
 		if (!$alt_tag){
 			$alt_tag = $attachment->post_title;
 		}
-		if (isset($attr['link']) && $attr['link'] != 'none'){
-			$linkStart = "<a href='";
-			$linkStart .= $link_full[0];
-			$linkStart .= "'>";
-			$linkEnd = "</a>";
 
-		}
-		else{
-			$linkStart ='';
-			$linkEnd = '';
-		}
+        $linkStart = "<a href='";
+        $linkStart .= $link_full[0];
+        $linkStart .= "'>";
+        $linkEnd = "</a>";
+
 		$output .= '<li>';
 		$output .= $linkStart;
 		$output .= "<img class='rsImg' src='".$link[0]."'";
 		$output .= 'title="'.$attachment->post_title.'" ';
 		$output .= 'alt="'.$alt_tag.'" />';
 		//$output .= $alt_tag;
+        $output .= $linkEnd;
 		$output .= '</li>'. "\n" ;
 
 	}
@@ -130,3 +130,48 @@ function fix_my_gallery_wpse43558($output, $attr) {
 add_filter("post_gallery", "fix_my_gallery_wpse43558",10,2);
 //add_action( 'wp_enqueue_scripts', 'json_api_client_js',10 );
 //add_filter( 'pods_json_api_access_pods_get_items', '__return_true' );
+
+
+function my_nav(){
+    echo '
+	<nav>
+		<ul>
+			<li>
+				<a href="#slide-1">
+					<span>Home</span>
+				</a>
+			</li>
+			<li>
+				<a href="#slide-2">
+					<span>Their Stories</span>
+				</a>
+			</li>
+			<li>
+				<a href="#slide-3">
+					<span>Our Story</span>
+				</a>
+			</li>
+			<li>
+				<a href="#slide-4">
+					<span>Venues</span>
+				</a>
+			</li>
+			<li>
+				<a href="#slide-5">
+					<span>Registry</span>
+				</a>
+			</li>
+			<li>
+				<a href="#slide-6">
+					<span>RSVP</span>
+				</a>
+			</li>
+			<li>
+				<a href="#slide-7">
+					<span>Bring Your Kids!</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+';
+}

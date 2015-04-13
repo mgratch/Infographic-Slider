@@ -1,1 +1,1 @@
-<div id="rsvpContent"><?php the_content(); ?></div>
+<div id="rsvpContent" class="rsNoDrag"><?php the_content(); ?></div>

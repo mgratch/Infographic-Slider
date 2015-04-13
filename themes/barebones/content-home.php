@@ -21,14 +21,14 @@ global $the_post_ID;
             <img id="leftImage" class="rsImg" src="<?php echo $left_image[0]; ?>" width="<?php echo $left_image[1]; ?>" height="<?php echo $left_image[2] ?>" data-rsw="<?php echo $left_image[1]; ?>" data-rsh="<?php echo $left_image[2] ?>"	/>
         </div>
         <div class="middle a-third">
-            <span class="rsABlock" data-move-effect="top" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $left_image[1]; ?>" data-rsh="<?php echo $left_image[2] ?>" /></span>
+            <span class="rsABlock" data-move-effect="top" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
             <span class="line-1"><?php echo $line_1; ?></span>
             <span class="line-2"><?php echo $line_2; ?></span>
             <span class="line-3"><?php echo $line_3; ?></span>
             <span class="wedding-date"><?php echo $wedding_date; ?></span>
         </div>
         <div class="left a-third">
-            <img id="rightImage" class="rsImg" src="<?php echo $right_image[0]; ?>" width="<?php echo $right_image[1]; ?>" height="<?php echo $right_image[2] ?>" data-rsw="<?php echo $left_image[1]; ?>" data-rsh="<?php echo $left_image[2] ?>" />
+            <img id="rightImage" class="rsImg" src="<?php echo $right_image[0]; ?>" width="<?php echo $right_image[1]; ?>" height="<?php echo $right_image[2] ?>" data-rsw="<?php echo $right_image[1]; ?>" data-rsh="<?php echo $right_image[2] ?>" />
         </div>
     <?php endif; ?>
 </div>

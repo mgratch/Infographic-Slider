@@ -1,0 +1,100 @@
+nav {
+    position: fixed;
+    left: -2vw;
+    z-index: 999;
+    top: 7vw;
+}
+nav ul {
+    list-style: none;
+    position: relative;
+}
+nav ul li {
+    float: none; margin: 0 20px 0 0;
+    display: block;
+    position: relative;
+}
+nav ul li a {
+    display: block;
+    width: 5vmax;
+    height: 5vmax;
+    background-image: url(icons.png); background-repeat: no-repeat;
+}
+nav ul li:nth-child(1) a {
+    background-color: #5bb2fc;
+    background-position: 17px 18px;
+}
+nav ul li:nth-child(2) a {
+    background-color: #58ebd3;
+    background-position: 17px -106px;
+}
+nav ul li:nth-child(3) a {
+    background-color: #ffa659;
+    background-position: 17px -232px;
+}
+nav ul li:nth-child(4) a {
+    background-color: #ff7a85;
+    background-position: 17px -355px;
+}
+nav ul li:nth-child(5) a {
+    background-color: #5bb2fc;
+    background-position: 17px 28px;
+}
+nav ul li:nth-child(6) a {
+    background-color: #58ebd3;
+    background-position: 17px -106px;
+}
+nav ul li:nth-child(7) a {
+    background-color: #ffa659;
+    background-position: 17px -232px;
+}
+nav ul li a span {
+    font: 1.25vmax "Dosis", sans-serif;
+    text-transform: uppercase;
+    position: absolute;
+    left: 5vw;
+    top: 1vmax;
+    display: none;
+    z-index: 999;
+    color: #fff;
+    padding: 1vmax;
+    white-space: nowrap;
+}
+nav ul li a:hover span {
+    display: block;
+}
+
+nav ul li:nth-child(1) a span {
+    background-color: #5bb2fc;
+}
+nav ul li:nth-child(2) a span {
+    background-color: #58ebd3;
+    font-size: 1.25vmax;
+    line-height: 1.66vmax;
+    white-space: nowrap;
+}
+nav ul li:nth-child(3) a span {
+    background-color: #ffa659;
+    font-size: 1.25vmax;
+    line-height: 1.66vmax;
+}
+nav ul li:nth-child(4) a span {
+    background-color: #ff7a85;
+    font-size: 1.25vmax;
+    line-height: 1.66vmax;
+}
+nav ul li:nth-child(5) a span {
+    background-color: #5bb2fc;
+    font-size: 1.25vmax;
+    line-height: 1.66vmax;
+}
+nav ul li:nth-child(6) a span {
+    background-color: #58ebd3;
+    font-size: 1.25vmax;
+    line-height: 1.66vmax;
+}
+nav ul li:nth-child(7) a span {
+    background-color: #ffa659;
+    font-size: 1.25vmax;
+    line-height: 1.66vmax;
+    white-space: nowrap;
+}
