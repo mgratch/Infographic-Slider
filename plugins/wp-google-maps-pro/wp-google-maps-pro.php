@@ -2986,7 +2986,7 @@ function wpgmaps_admin_javascript_pro() {
     </script>
 
     <?php } ?>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.24/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.8.24/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" media="all" href="<?php echo wpgmaps_get_plugin_url(); ?>/css/data_table.css" />
     <script type="text/javascript" src="<?php echo wpgmaps_get_plugin_url(); ?>/js/jquery.dataTables.js"></script>
     <script type="text/javascript" >
