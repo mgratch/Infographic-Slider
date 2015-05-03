@@ -31,7 +31,7 @@ function rsvp_frontend_handler($text) {
 	if((strtotime($closeDate) !== false) && (strtotime($closeDate) < time())) {
 		return rsvp_handle_output($text, RSVP_START_PARA.__("The deadline to RSVP for this wedding has passed, please contact the bride and groom to verify that there is still a seat for you.", 'rsvp-plugin').RSVP_END_PARA);
 	}
-	
+  
 	if(isset($_POST['rsvpStep'])) {
 		$output = "";
 		switch(strtolower($_POST['rsvpStep'])) {
@@ -187,14 +187,14 @@ function rsvp_frontend_main_form($attendeeID, $rsvpStep = "handleRsvp") {
     $form .= RSVP_START_PARA;
     $form .= rsvp_BeginningFormField("", "").
       "<label for=\"attendeeFirstName\">".__("First Name: ", 'rsvp-plugin')."</label>".
-      "<input type=\"text\" placeholder=\"First Name\" name=\"attendeeFirstName\" id=\"attendeeFirstName\" value=\"".htmlspecialchars($rsvp_saved_form_vars['attendeeFirstName'])."\" />".
+      "<input type=\"text\" name=\"attendeeFirstName\" id=\"attendeeFirstName\" value=\"".htmlspecialchars($rsvp_saved_form_vars['attendeeFirstName'])."\" />".
       RSVP_END_FORM_FIELD;
     $form .= RSVP_END_PARA;
     
     $form .= RSVP_START_PARA;
     $form .= rsvp_BeginningFormField("", "").
       "<label for=\"attendeeLastName\">".__("Last Name: ", 'rsvp-plugin')."</label>".
-      "<input type=\"text\" placeholder=\"First Name\" name=\"attendeeLastName\" id=\"attendeeLastName\" value=\"".htmlspecialchars($rsvp_saved_form_vars['attendeeLastName'])."\" />".
+      "<input type=\"text\" name=\"attendeeLastName\" id=\"attendeeLastName\" value=\"".htmlspecialchars($rsvp_saved_form_vars['attendeeLastName'])."\" />".
       RSVP_END_FORM_FIELD;
     $form .= RSVP_END_PARA;
   }
@@ -239,7 +239,7 @@ function rsvp_frontend_main_form($attendeeID, $rsvpStep = "handleRsvp") {
   if(get_option(OPTION_RSVP_HIDE_EMAIL_FIELD) != "Y") {
     $form .= rsvp_BeginningFormField("", "rsvpBorderTop").
       RSVP_START_PARA."<label for=\"mainEmail\">".__("Email Address", 'rsvp-plugin')."</label>".RSVP_END_PARA.
-        "<input type=\"text\" placeholder=\"Email Address\" name=\"mainEmail\" id=\"mainEmail\" value=\"".htmlspecialchars($attendee->email)."\" />".
+        "<input type=\"text\" name=\"mainEmail\" id=\"mainEmail\" value=\"".htmlspecialchars($attendee->email)."\" />".
       RSVP_END_FORM_FIELD;
   }
 	
@@ -248,7 +248,7 @@ function rsvp_frontend_main_form($attendeeID, $rsvpStep = "handleRsvp") {
 	if(get_option(RSVP_OPTION_HIDE_NOTE) != "Y") {
   	$form .= RSVP_START_PARA.$noteVerbiage.RSVP_END_PARA.
       rsvp_BeginningFormField("", "").
-        "<textarea placeholder=\"RSVP Noted...\" name=\"rsvp_note\" id=\"rsvp_note\" rows=\"7\" cols=\"50\">".((!empty($attendee->note)) ? $attendee->note : $rsvp_saved_form_vars['rsvp_note'])."</textarea>".RSVP_END_FORM_FIELD;
+        "<textarea name=\"rsvp_note\" id=\"rsvp_note\" rows=\"7\" cols=\"50\">".((!empty($attendee->note)) ? $attendee->note : $rsvp_saved_form_vars['rsvp_note'])."</textarea>".RSVP_END_FORM_FIELD;
 	
   }
 	
@@ -320,7 +320,7 @@ function rsvp_frontend_main_form($attendeeID, $rsvpStep = "handleRsvp") {
         if(get_option(OPTION_RSVP_HIDE_EMAIL_FIELD) != "Y") {
           $form .= rsvp_BeginningFormField("", "rsvpBorderTop").
             RSVP_START_PARA."<label for=\"attending".$a->id."Email\">".__("Email Address", 'rsvp-plugin')."</label>".RSVP_END_PARA.
-              "<input type=\"text\" placeholder=\"Email Address\" name=\"attending".$a->id."Email\" id=\"attending".$a->id."Email\" value=\"".htmlspecialchars($a->email)."\" />".
+              "<input type=\"text\" name=\"attending".$a->id."Email\" id=\"attending".$a->id."Email\" value=\"".htmlspecialchars($a->email)."\" />".
             RSVP_END_FORM_FIELD;
         }
       
@@ -427,7 +427,7 @@ function rsvp_buildAdditionalQuestions($attendeeID, $prefix) {
 					}
 				} else {
 					// normal text input
-					$output .= "<input type=\"text\" placeholder=\"".stripslashes($a->answer)."\" name=\"".$prefix."question".$q->id."\" value=\"".htmlspecialchars($oldAnswer)."\" size=\"25\" />";
+					$output .= "<input type=\"text\" name=\"".$prefix."question".$q->id."\" value=\"".htmlspecialchars($oldAnswer)."\" size=\"25\" />";
 				}
 				
 			$output .= RSVP_END_FORM_FIELD;
@@ -1135,13 +1135,13 @@ function rsvp_frontend_greeting() {
 	$output .= "	<input type=\"hidden\" name=\"rsvpStep\" value=\"find\" />";
   if(!rsvp_require_only_passcode_to_register()) {
 	$output .= RSVP_START_PARA."<label for=\"firstName\">".__("First Name", 'rsvp-plugin').":</label> 
-								 <input type=\"text\" placeholder=\"First Name\" name=\"firstName\" id=\"firstName\" size=\"30\" value=\"\" class=\"required\" />".RSVP_END_PARA;
+								 <input type=\"text\" name=\"firstName\" id=\"firstName\" size=\"30\" value=\"\" class=\"required\" />".RSVP_END_PARA;
 	$output .= RSVP_START_PARA."<label for=\"lastName\">".__("Last Name", 'rsvp-plugin').":</label> 
-								 <input type=\"text\" placeholder=\"Last Name\" name=\"lastName\" id=\"lastName\" size=\"30\" value=\"\" class=\"required\" />".RSVP_END_PARA;
+								 <input type=\"text\" name=\"lastName\" id=\"lastName\" size=\"30\" value=\"\" class=\"required\" />".RSVP_END_PARA;
   }
 	if(rsvp_require_passcode()) {
 		$output .= RSVP_START_PARA."<label for=\"passcode\">".__("Passcode", 'rsvp-plugin').":</label> 
-									 <input type=\"password\" placeholder=\"Password\" name=\"passcode\" id=\"passcode\" size=\"30\" value=\"\" class=\"required\" autocomplete=\"off\" />".RSVP_END_PARA;
+									 <input type=\"password\" name=\"passcode\" id=\"passcode\" size=\"30\" value=\"\" class=\"required\" autocomplete=\"off\" />".RSVP_END_PARA;
 	}
 	$output .= RSVP_START_PARA."<input type=\"submit\" value=\"".__("Complete your RSVP!", 'rsvp-plugin')."\" />".RSVP_END_PARA;
 	$output .= "</form>\r\n";
@@ -1174,16 +1174,16 @@ function rsvp_inject_add_guests_js($attendeeID) {
                       \"<div class=\\\"rsvpAdditionalAttendeeQuestions\\\">\" + \r\n
 											\"<div class=\\\"rsvpFormField\\\">\" + \r\n
                       \"	<label for=\\\"newAttending\" + numAdditional + \"FirstName\\\">".__("Person's first name", 'rsvp-plugin')."&nbsp;</label>\" + \r\n 
-												\"  <input type=\\\"text\\\" placeholder=\\\"First Name\\\" name=\\\"newAttending\" + numAdditional + \"FirstName\\\" id=\\\"newAttending\" + numAdditional + \"FirstName\\\" />\" + \r\n
+												\"  <input type=\\\"text\\\" name=\\\"newAttending\" + numAdditional + \"FirstName\\\" id=\\\"newAttending\" + numAdditional + \"FirstName\\\" />\" + \r\n
 									  	\"</div>\" + \r\n
 											\"<div class=\\\"rsvpFormField\\\">\" + \r\n
                       \"	<label for=\\\"newAttending\" + numAdditional + \"LastName\\\">".__("Person's last name", 'rsvp-plugin')."</label>\" + \r\n 
-												\"  <input type=\\\"text\\\" placeholder=\\\"Last Name\\\" name=\\\"newAttending\" + numAdditional + \"LastName\\\" id=\\\"newAttending\" + numAdditional + \"LastName\\\" />\" + \r\n
+												\"  <input type=\\\"text\\\" name=\\\"newAttending\" + numAdditional + \"LastName\\\" id=\\\"newAttending\" + numAdditional + \"LastName\\\" />\" + \r\n
                       \"</div>\" + \r\n";
                       if(get_option(OPTION_RSVP_HIDE_EMAIL_FIELD) != "Y") {
 												$form .= "\"<div class=\\\"rsvpFormField\\\">\" + \r\n
                         \"	<label for=\\\"newAttending\" + numAdditional + \"Email\\\">".__("Person's email address", 'rsvp-plugin')."</label>\" + \r\n 
-													\"  <input type=\\\"text\\\" placeholder=\\\"Email\\\" name=\\\"newAttending\" + numAdditional + \"Email\\\" id=\\\"newAttending\" + numAdditional + \"Email\\\" />\" + \r\n
+													\"  <input type=\\\"text\\\" name=\\\"newAttending\" + numAdditional + \"Email\\\" id=\\\"newAttending\" + numAdditional + \"Email\\\" />\" + \r\n
                         \"</div>\" + \r\n";
                       }
                       

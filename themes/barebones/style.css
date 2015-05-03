@@ -27,13 +27,14 @@ barebones is based on Underscores http://underscores.me/, (C) 2012-2015 Automatt
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
     border: 0;
     font-family: inherit;
-    font-size: 100%;
+    font-size: 22px;
     font-style: inherit;
     font-weight: inherit;
     margin: 0;
     outline: 0;
     padding: 0;
     vertical-align: baseline;
+    color: #fff;
 }
 
 html {
@@ -41,9 +42,9 @@ html {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 62.5%;
-    overflow-y: scroll;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    color: #fff;
 }
 
 *,
@@ -56,6 +57,7 @@ html {
 
 body {
     background: #f1f1f1;
+    color: #fff;
 }
 
 article,
@@ -122,14 +124,19 @@ a img {
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
 }
 a {
     color: #fff;
 }
-label {
+#rsvpRow label, .protectQuiet label {
     display: none;
 }
+
+#rsvpPlugin input {
+    margin-bottom: 2vmin;
+    width: 100%;
+}
+
 input {
     font-size: 1.25em;
     padding: 1%;
@@ -138,31 +145,39 @@ input {
 input[type="submit"] {
     background-color: #134385;
     border: none;
-    color: #fff;
+    color: #fff !important;
 }
-#mainSlider, #venueSlider, #theirStorySlider {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0px;
-    height: auto;
-    width: auto;
+
+p {
+    margin-bottom: 1.5em !important;
 }
-.royalSlider{
-    text-align: left;
-}
+
 #homeRow {
     text-align: center;
     display: block;
-    margin: 0px auto;
     font-size:100%;
     background-color: #88242C;
-    height: 100vh;
-    padding: 5.5% 3% 9%;
+    line-height: 100vh;
+    min-height: 100%;
+    max-height: 100%;
+    /* width: 100%; */
+    /* z-index: 300; */
 }
+
+#homeRow .col:first-child {
+    margin-left:12.5%;
+}
+
+#homeRow .col:nth-child(2) {
+    /* vertical-align:top; */
+
+    /* line-height: normal; */
+    color: #fff;
+}
+
 #homeRow .middle img{
     max-width: 100%;
+    min-width: 100%;
     width: 100%;
     height: auto;
 }
@@ -179,22 +194,21 @@ input[type="submit"] {
     white-space: nowrap;
 }
 #homeRow .line-1 {
-    font-size: 4.72vw;
+    font-size: 5.72vw;
     font-weight: 700;
     line-height: 88px;
-    margin-top: 70%;
 }
 #homeRow .line-2 {
-    font-size: 4.25vw;
+    font-size: 5.17vw;
 }
 #homeRow .line-3 {
-    font-size: 4.05vw;
+    font-size: 4.95vw;
     font-weight: 700;
     border-top: 5px solid #fff;
     border-bottom: 5px solid #fff;
 }
 #homeRow .wedding-date {
-    font-size: 3.75vw;
+    font-size: 4.55vw;
 }
 .a-third {
     max-width: 22.4%;
@@ -204,7 +218,10 @@ input[type="submit"] {
 }
 img#leftImage, img#rightImage {
     max-width: 100%;
+    min-width: 100%;
     height: auto;
+    z-index: 200;
+    position: relative;
 }
 .middle.a-third {
     max-width: 20.08%;
@@ -218,12 +235,27 @@ img#leftImage, img#rightImage {
  *
  */
 
+#theirStorySlider .rsOverflow, #theirStorySlider .rsSlide {
+    background: #8F3074;
+    /* overflow-y: hidden; */
+    /* overflow-x: visible; */
+}
+
+#theirStorySlider, #venueSlider {
+    width: 100%;
+    height: 100vh;
+    background: #8F3074;
+}
+
+
+
 .outerBox {
     background-color: #88242C;
     padding: 4.55%;
     border: 5px solid #000;
     position: relative;
-    height: 66vh;
+    min-height: 66vh;
+    z-index: 200;
 }
 
 #theirStory{
@@ -231,25 +263,31 @@ img#leftImage, img#rightImage {
     display: block;
     margin: 0px auto;
     background-color: #8F3074;
-    padding: 5.5% 3% 9%;
-    font-size: 2.2vmin;
+    font-size: 22px;
     line-height: normal;
     height: 100vh;
+    position: relative;
+    overflow: visible;
 }
-#herStory.a-half, #hisStory.a-half {
-    max-width: 24%;
-    display: inline-block;
-    vertical-align: top;
+
+#theirStory .leftSide, #theirStory .rightSide {
     background-color: #fff;
-    padding: 1.33%;
+    padding: 5%;
     border: 4px solid #000;
-    position: relative;
+    line-height:normal;
+    z-index: 150;
 }
-.middle-half {
-    min-width: 20.45%;
-    display: inline-block;
-    position: relative;
+
+#herStory.col:first-child {
+    margin-left: 12.5%;
 }
+
+#herStory.col, #hisStory.col {
+    height: 100vh;
+    line-height: 100vh;
+
+}
+
 img#herImage,img#hisImage {
     max-width: 40.5%;
     height: auto;
@@ -273,16 +311,17 @@ img#herImage,img#hisImage {
 }
 #titleImage {
     position: absolute;
-    z-index: -1;
-    top: -15vh;
-    max-width: 15vw;
+    /* z-index: -1; */
+    top: 1vh;
+    max-width: 10vw;
     height: auto;
-    left: 5vw;
+    left: 9vw;
 }
 #hisStory #titleImage {
     width:35%;
     right:inherit;
-    left: 48%;
+    left: 10vw;
+    top: 3vh;
 }
 
 /*
@@ -297,16 +336,23 @@ img#herImage,img#hisImage {
     margin: 0px auto;
     font-size:8em;
     background-color: #134385;
-    padding: 3.5% 3% 6%;
-    overflow: hidden;
+    overflow-x: hidden;
     height: 100vh;
+    line-height: 100vh;
+}
+.photoMosaic {
+    z-index:200;
 }
 #target {
     margin: 0 auto;
-    max-width: 85vw !important;
+    width: 85vw !important;
     padding: .5%;
     background-color: #fff;
     border: 4px solid #000;
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 200;
+    /* position: relative; */
 }
 #target a {
     border: 2px solid #000;
@@ -323,28 +369,58 @@ img#herImage,img#hisImage {
     border: 5px dashed #fff;
     padding: 1%;
 }
-#ourStory .title {
+
+#ourStory .title, #ourStory h1.title {
     font-size: 12vmin;
     font-family: Century Gothic;
     font-weight: 100;
     background-repeat: no-repeat;
-    display: block;
     text-align: left;
     position: relative;
     z-index: 100;
-    margin-top: 20vh;
+    vertical-align: middle;
+    display: inline-block;
 }
 
-#ourStorySlideOne {
+#ourStorySlideOne,#after-ourStorySlideOne {
     display: block;
     margin: 0px auto;
     font-size: 1vmax;
-    padding: 4.5% 2% 3%;
     background-color: #48143A;
     text-align: center;
     position: relative;
-    height: 50vh;
+    height: 60vh;
 }
+
+#ourStorySlideOne-top {
+    display: block;
+    height: 60vh;
+    line-height: 60vh;
+}
+#ourStorySlideOne-top #venueImage {
+    height: 18vh;
+    width: auto;
+}
+
+.venue-col {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    white-space: nowrap;
+    padding: 1vmax;
+    float: none;
+    text-align: center;
+    width: 22vw;
+    /* height: 18vw; */
+    z-index: 200;
+    border: 5px dashed;
+    background-color: #48143A;
+    position: relative;
+}
+.venue-col:nth-child(3) {
+    margin: 0px 10vw;
+}
+
 #ourStorySlideOne p {
     margin: 0px;
 }
@@ -377,11 +453,9 @@ img#herImage,img#hisImage {
     display: block;
 }
 #ourStorySlideOne #venueImage {
-    max-width: 25%;
-    height: auto;
+    height: 18vh;
 }
 #ourHotel #venueImage {
-    max-width: 40%;
     padding-bottom: 17px;
 }
 #ourStorySlideOne .title {
@@ -391,7 +465,6 @@ img#herImage,img#hisImage {
 }
 #ourWedding #venueImage {
     padding-bottom: 15px;
-    max-width: 55%;
 }
 
 #ourStorySlideOne .a-third#ourDinner {
@@ -404,19 +477,30 @@ img#herImage,img#hisImage {
 
     position: relative;
 }
+#after-ourStorySlideOne {
+    padding: 0px;
+    z-index: 200;
+}
 
+#map-container {
+    height: 100%;
+    z-index: 200;
+}
 .wpgmza_map {
     background-color: #000;
 }
+.stellar-places-info-window p {
+    color: #000;
+    font-weight: 400;
+}
 #ourVenueStory {
-    display: block;
+    display: inline-block;
     margin: 0px auto;
     font-size:1.5em;
     padding: 4.5% 2% 3%;
     background-color: #48143A;
     text-align: center;
     position: relative;
-    overflow: hidden;
 }
 #ourVenueStory .line.line-1 {
     max-width: 60%;
@@ -437,12 +521,13 @@ img#herImage,img#hisImage {
     margin: 1em 0px;
 }
 #ourVenueStory .comicStyle {
-    position: absolute;
-    top: 33%;
-    left: 3.35%;
+    /* position: absolute; */
+    /* top: 33%; */
+    /* left: 3.35%; */
     padding: 1%;
     background-color: #fff;
     border: 4px solid #000;
+    display: inline-block;
 }
 #ourVenueStory #venueImage {
     border: 4px solid #000;
@@ -450,11 +535,11 @@ img#herImage,img#hisImage {
 #ourRegistry {
     display: block;
     margin: 0px auto;
-    font-size: 3.5vmin;
-    padding: 4.5% 2% 3%;
+    font-size: 16px;
     background-color: #2B645D;
     position: relative;
     height: 100vh;
+    line-height: 100vh;
 }
 #ourRegistry #description {
     max-width: 100%;
@@ -490,7 +575,8 @@ img#herImage,img#hisImage {
 }
 #registryHeader {
     text-align: center;
-    margin: 3% 30% 8% 4%;
+    line-height: 100vh;
+    height: 100vh;
 }
 .a-fourth {
     border: 5px dashed #fff;
@@ -522,26 +608,32 @@ img#amazon-com-img {
     display: block;
     margin: 0px auto;
     font-size: 2.5vmin;
-    padding: 4.5% 2% 7%;
+    /* padding: 4.5% 2% 7%; */
     position: relative;
     text-align: center;
     height: 100vh;
+    /* z-index: 200; */
+    line-height: 100vh;
+}
+#rsvpContent .leftSide {
+    padding: 4%;
+    border: 5px dashed #fff;
+    position: relative;
+    z-index: 200;
+    background-color: #E1AE45;
 }
 #rsvpRow p:first-child {
-    /* max-width: 50%; */
     font-size: 2em;
     display: block;
     margin: auto;
 }
 #rsvpRow p:first-child + p {
-    /* display:none; */
     font-size: 2vmax;
     margin-top: 1vw;
 }
 
 .rsvpParagraph {
     display: block;
-    /* width: 50%; */
     margin: 2% auto 2%;
     font-size: 1.5em;
 }
@@ -553,35 +645,48 @@ img#amazon-com-img {
 
 #rsvpPlugin .rsvpParagraph {
     display: block;
-    /* width: 50%; */
     margin: 0% auto;
     font-size: 1.5em;
 }
 #rsvpContent {
     display: inline-block;
     text-align: left;
-    padding: 4%;
-    border: 5px dashed #fff;
-    position: relative;
+    /* padding: 4%; */
+    /* border: 5px dashed #fff; */
+    /* position: relative; */
+    /* z-index: 200; */
+    background-color: #E1AE45;
+    vertical-align: middle;
+    /* line-height: normal; */
 }
 #kidsRow {
     display: block;
     margin: 0px auto;
     background-color: #88242C;
-    padding: 5.5% 3% 6%;
+    /* padding: 5.5% 3% 6%; */
     text-align: left;
     height: 100vh;
     font-size: 2vmin;
+    position: relative;
 }
+
+#kidsRow .col {
+    height: 100vh;
+    line-height: 100vh;
+}
+
 #kidsRow .comicStyle {
     text-align: left;
     display: inline-block;
     margin: 0px auto;
-    max-width: 24vw;
     padding: 2%;
     background-color: #fff;
     border: 4px solid #000;
     position: relative;
+    z-index: 200;
+    vertical-align: middle;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 #kidsRow img#kidsImg {
@@ -590,138 +695,146 @@ img#amazon-com-img {
     vertical-align: middle;
     display: block;
     max-width: 100%;
+    min-width: 100%;
     border: 4px solid #000;
     background-color: #fff;
 }
 #kidsRow .line.line-1 {
-    max-width: 60%;
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 1.5vmax;
     margin-left: 5%;
-    vertical-align: top;
+    vertical-align: middle;
     padding: 4%;
     border: 5px dashed #fff;
-    margin-top: 7%;
+    line-height: 1.5em;
+    z-index: 200;
+    position: relative;
+    background-color: #88242C;
 }
 #herFullStoryRow, #hisFullStoryRow {
     display: block;
     margin: 0px auto;
     background-color: #8F3074;
-    padding: 5.5% 3% 12%;
+    /* padding: 5.5% 3% 12%; */
     font-size: 1.2em;
 
-    line-height: 1em;
+    line-height: 100vh;
+    /* height: 100vh; */
+    text-align: center;
+    z-index: 200;
+    /* overflow: hidden; */
 }
 #herFullStory, #hisFullStory{
-    padding: 1% 2%;
+    padding: 5% 5%;
     border: 5px dashed #fff;
-    max-width: 50%;
-    margin: 0px auto;
     font-size: 2.25vmin;
     line-height: normal;
+    display: inline-block;
+    text-align: left;
+    width: 85%;
+    vertical-align: middle;
 }
-#hisFullStoryRow {
-    padding: 13.5% 3% 19%;
-}
-/*
-.rsContent .rsContent + .rsContent {
-    visibility: hidden;
-}
-*/
+
+
 /*
  * Dotted Lines
 */
 
-.left.a-third:after , .right.a-third:after {
+
+#homeRow .col:after {
     content:"";
     border-left: 5px dashed #fff;
-    height:200px;
+    height: 30vmax;
     width: 0px;
     display: block;
     position: absolute;
-    bottom: auto;
+    bottom: -130px;
     right: 50%;
-    z-index: 9999;
+    z-index: 150;
 }
 
-#herStory:after {
-    content:"";
-    border-left: 5px dashed #fff;
-    height: 300px;
-    width: 0px;
-    display: block;
-    position: absolute;
-    bottom: auto;
-    right: 33.333%;
-    z-index: 9999;
-    transform: rotate(-45deg);
+#homeRow .col:nth-child(2):after {
+    content: inherit;
+    border: 0px;
 }
 
-#hisStory:after {
-    content:"";
-    border-left: 5px dashed #fff;
-    height: 300px;
-    width: 0px;
-    display: block;
-    position: absolute;
-    bottom: auto;
-    left: 33.333%;
-    z-index: 9999;
-    transform: rotate(45deg);
-}
 
 #target:after {
     content:"";
     border-left: 5px dashed #fff;
-    height: 100vh;
+    height: 120vh;
     width: 0px;
     display: block;
     position: absolute;
     bottom: auto;
     right: 50%;
-    z-index: 9999;
+    z-index: 150;
+}
+#target:before {
+    content:"";
+    border-left: 5px dashed #fff;
+    height: 300px;
+    width: 0px;
+    display: block;
+    position: absolute;
+    top: -22.75vh;
+    left: 27.5%;
+    z-index: 100;
+    transform: rotate(-45deg);
+}
+#gallery-container:before {
+    content:"";
+    border-left: 5px dashed #fff;
+    height: 300px;
+    width: 0px;
+    display: block;
+    position: absolute;
+    top: -22.75vh;
+    right: 27.5%;
+    z-index: 150;
+    transform: rotate(45deg);
 }
 
-#ourStorySlideOne .a-third:after {
+#ourStorySlideOne .venue-col:after {
     content:"";
     border-right: 5px dashed #fff;
     height: 83px;
-    width: 133%;
+    width: 31vmax;
     display: block;
     position: absolute;
     top: -25%;
     right: 50%;
-    z-index: 9999;
+    z-index: 150;
 }
 
-#ourStorySlideOne #ourHotel.a-third:after{
+#ourStorySlideOne #ourHotel.venue-col:after{
     border-left: 5px dashed #fff;
     right: inherit;
     left: 50%;
-    width: 124%;
+    width: 31vmax;
     border-right: 0px;
     border-bottom: 5px dashed #fff;
-    height: 8%;
-    bottom: -13%;
+    height: 13%;
+    bottom: -18%;
     top: inherit;
 }
 
-#ourStorySlideOne #ourDinner.a-third:after{
+#ourStorySlideOne #ourDinner.venue-col:after{
     border-top: 0px;
-    bottom: -13%;
-    height: 9%;
+    bottom: inherit;
+    height: 0;
     top: inherit;
 }
-#ourStorySlideOne #ourWedding.a-third:after {
+#ourStorySlideOne #ourWedding.venue-col:after {
     border-bottom: 5px dashed #fff;
-    width: 142%;
-    height: 8%;
-    bottom: -13%;
+    width: 31vmax;
+    height: 13%;
+    bottom: -18%;
     top: inherit;
 }
 
 
-#ourStorySlideOne .a-third:before {
+#ourStorySlideOne .venue-col:before {
     content:"";
     border-right: 5px dashed #fff;
     height: 83px;
@@ -730,34 +843,30 @@ img#amazon-com-img {
     position: absolute;
     top: -25%;
     right: 50%;
-    z-index: 9999;
 }
 
-#ourStorySlideOne #ourHotel.a-third:before{
+#ourStorySlideOne #ourHotel.venue-col:before{
     border-left: 5px dashed #fff;
     right: inherit;
     left: 50%;
-    width: 124%;
+    width: 31vmax;
     border-right: 0px;
     border-top: 5px dashed #fff;
     height: 12%;
     top: -18%;
 }
 
-#ourStorySlideOne #ourDinner.a-third:before{
-    border-top: 0px;
-    top: -37%;
-    height: 35%;
+#ourStorySlideOne #ourDinner.venue-col:before{
+    border-top: none;
+    top: inherit;
+    height: 0;
 }
-#ourStorySlideOne #ourWedding.a-third:before {
+#ourStorySlideOne #ourWedding.venue-col:before {
     border-top:5px dashed #fff;
-    width: 142%;
+    width: 31vmax;
     height: 12%;
     top: -18%;
 }
-
-
-
 #ourRegistry #registryHeader #description:before {
     content:"";
     border-right: 5px dashed #fff;
@@ -767,7 +876,7 @@ img#amazon-com-img {
     position: absolute;
     top: -90%;
     right: 50%;
-    z-index: 9999;
+    z-index: 150;
 }
 
 #ourRegistry #description + a:before {
@@ -779,7 +888,7 @@ img#amazon-com-img {
     position: absolute;
     top: -13%;
     right: 50%;
-    z-index: 9999;
+    z-index: 150;
 }
 
 #ourRegistry #registryHeader #aFewWords:before {
@@ -791,19 +900,19 @@ img#amazon-com-img {
     position: absolute;
     top: -3.5vh;
     right: 50%;
-    z-index: 9999;
+    z-index: 150;
 }
 
 #ourRegistry #registryHeader #aFewWords:after {
     content:"";
     border-top:5px dashed #fff;
     position: absolute;
-    right: -35vw;
-    top: -15vw;
-    width: 40vw;
+    right: -24.99vw;
+    top: -14vw;
+    width: 32vw;
     float: none;
     text-align: right;
-    transform: rotate(-45deg);
+    transform: rotate(-57deg);
 }
 
 #ourRegistry #crate-barrel:after {
@@ -849,44 +958,47 @@ img#amazon-com-img {
     content:"";
     border-left: 5px dashed #fff;
     right: inherit;
-    left: 28%;
+    left: -4vw;
     width: 0%;
     border-right: 0px;
-    height: 17vw;
+    height: 50vmax;
     bottom: inherit;
-    top: 4vw;
+    top: 0vw;
     position: absolute;
     transform: rotate(45deg);
-    z-index:999;
+    z-index:150;
 }
 
-#rsvpRow #rsvpContent:after {
+#rsvpRow #rsvpContent .leftSide:after {
     content:"";
     border-left: 5px dashed #fff;
     right: inherit;
-    left: 18%;
+    left: auto;
     width: 0%;
     border-right: 0px;
-    height: 17vw;
-    bottom: -15vw;
-    top: inherit;
+    height: 50vw;
+    bottom: -45vmax;
+    top: auto;
     position: absolute;
     transform: rotate(45deg);
-    z-index:999;
+    z-index:150;
 }
 
 #kidsRow .comicStyle:after {
     content:"";
     border-top: 5px dashed #fff;
-    right: -4.5vw;
-    left: inherit;
+    right: auto;
+    left: 100%;
     bottom: -15vw;
     top: 50%;
     position: absolute;
-    z-index:999;
+    z-index: 100;
     height: 0;
-    width: 4vw;
+    width: 15vw;
+    max-width: 100%;
+    min-width: 100%;
 }
+
 
 /*
  *
@@ -895,14 +1007,22 @@ img#amazon-com-img {
  */
 .protectQuiet p {
     font-size: 3em;
+    white-space: normal;
+    margin-bottom: 2% !important;
 }
 
 form.protectQuiet {
     padding: 5.5% 3% 9%;
+    line-height: normal;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .protectQuiet p input {
-    font-size: 2em;
+    /* font-size: 2em; */
+    color: #000;
+    /* width: 100%; */
+    border: none;
 }
 
 .iexp #theirStorySlider .rsContainer,
@@ -920,64 +1040,47 @@ form.protectQuiet {
     font-weight: 700;
     font-family: arial;
     position: absolute;
-    right: 5%;
+    right: 3%;
     top: 40%;
+    line-height: normal;
 }
 
 #hisFullStoryRow .go-back {
     background-color: #134385;
     border: none;
     color: #fff;
-    font-size: 2em;
+    font-size: 2rem;
     padding: 2%;
     text-decoration: none;
     font-weight: 700;
     font-family: arial;
     position: absolute;
-    left: 5%;
+    left: 2%;
     top: 40%;
+    bottom: auto;
+    line-height: normal;
 }
 .hidden {
     display: none;
 }
-#theirStorySlider .rsContent {
-    position: absolute;
-    visibility: visible;
-}
 
-#theirStorySlider .rsContent:first-child {
-    left: -100%;
+.row.our-gallery {
+    position: relative;
 }
-
-#theirStorySlider .rsContent:last-child {
-    right: -100%;
-}
-
-#theirStorySlider .normalize.rsContent {
-    position: inherit;
-    visibility: visible;
-}
-
-#theirStorySlider .normalize.rsContent:first-child {
-    left: auto;
-}
-
-#theirStorySlider .normalize.rsContent:last-child {
-    right: auto;
-}
-
 img#logo {
     max-width: 100%;
     height: auto;
+    display: none;
 }
 #theirStory span#logo-box {
-    max-width: 20.08vw;
+    max-width: 100%;
+    min-width: 100%;
 }
 #ourStory span#logo-box {
     max-width: 25vw;
     right: 3vw;
     left: auto;
-    bottom: 5.5vh;
+    bottom: 1.5vh;
     top: auto;
 }
 #ourStorySlideOne span#logo-box {
@@ -985,17 +1088,52 @@ img#logo {
     top: 12vh;
     left: -50vw;
 }
-#ourRegistry span#logo-box {
-    max-width: 21vw;
-    top: 60.67vh;
-    left: 40.08vw;
+#underGallery {
+    text-align: left;
+    display: block;
+    height: 50vh;
+    line-height: 50vh;
+    position: relative;
 }
+#gallery-container {
+    line-height: 50vh;
+    height: 50vh;
+    display: block;
+    /* position: relative; */
+}
+#ourRegistry span#logo-box {
+}
+.leftSide {
+    line-height: normal;
+    float: none;
+    vertical-align: middle;
+    display: inline-block;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+#registryItems {
+    height: 100vh;
+    line-height: 100vh;
+    display: block;
+}
+
+.rightSide {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+}
+
 #rsvpRow span#logo-box {
-    max-width: 19vw;
-    left: auto;
-    right: 2vw;
-    bottom: 2vw;
-    top: auto;
+    max-width: 200px;
+    left: 26%;
+    /* right: 33%; */
+    /* bottom: 0px; */
+    top: 40vh;
+    z-index: 300;
+    /* line-height: normal; */
+    /* height: 19vw; */
+    /* vertical-align: inherit; */
 }
 #kidsRow span#logo-box {
     max-width: 16vw;
@@ -1003,13 +1141,338 @@ img#logo {
     left: 42.5vw;
     top: 1vh;
 }
+img#logo {
+    max-width: 300px;
+}
 
-@media (max-width: 1600px){
-    #ourStory span#logo-box {
-        max-width: 25vw;
-        right: 3vw;
+@media (max-width: 1200px){
+
+    .protectQuiet p input {
+        font-size: .8em;
+    }
+    #herStory.col:first-child {
+        margin-left: 5%;
+        width: 45%;
+    }
+    #logoCol {
+        position: absolute;
+
+        left: 38.5vw;
+        top: -3vh;
+        display: block;
+        float: none;
+        z-index: 300;
+        /* box-sizing: content-box; */
+    }
+    #hisStory {
+        width: 45%;
+    }
+
+    #theirStory .title {
+        width: 100%;
+    }
+
+    #herStory #titleImage {
+        left: 11vw;
+        top: 2vh;
+    }
+}
+
+@media (max-width:991px) {
+    .protectQuiet p input {
+        font-size: .6em;
+    }
+
+    #homeRow .col:first-child {
+        margin-top: 50px;
+        width: 40vmax;
+        height: 40vmax;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 10px solid #fff;
+        float: left;
+        margin-left: 0px;
+    }
+
+    img#leftImage {
+        max-width: inherit;
+        position: absolute;
+        left: -22vw;
+        top: -7vh;
+        border-radius: 0PX;
+        border: 1px transparent;
+        background-color: #fff;
+    }
+
+    #homeRow .col:nth-child(2) {
+        width: 50%;
+        display: inline-block;
+        float: right;
+        margin-right: 5%;
+    }
+
+    #homeRow .col:last-child {
+        margin-top: 50px;
+        width: 40vmax;
+        height: 40vmax;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 10px solid #fff;
+        float: left;
+        margin-bottom: 50px;
+    }
+
+    img#rightImage {
+        max-width: inherit;
+        position: absolute;
+        left: -11vw;
+        top: -7vh;
+        border-radius: 0PX;
+        border: 1px transparent;
+        background-color: #fff;
+    }
+
+    #homeRow .line-1 {
+        font-size: 11.22vmin;
+    }
+
+    #homeRow .line-2 {
+        font-size: 10.1vmin;
+    }
+
+    #homeRow .line-3 {
+        font-size: 9.7vmin;
+    }
+
+    #homeRow .wedding-date {
+        font-size: 8.9vmin;
+    }
+
+    #herStory.col:first-child {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 769px){
+
+    .protectQuiet p input {
+        font-size: .5em;
+    }
+
+    .col.col-md-3.col-md-offset-1 {
+        margin: 0px auto !important;
+        text-align: center;
+        float: none !important;
+        display: block;
+    }
+
+    div#homeRow {
+        /* margin: 0px auto; */
+        text-align: center;
+        padding: 10vh 0px;
+    }
+
+    #homeRow .col:last-child {
+        float: none !important;
+        display: block;
+        margin: 0px auto 0px !important;
+        line-height: normal;
+    }
+
+    .col.col-md-3 {
+        margin: 0px auto;
+    }
+
+    #theirStory .col:nth-child(2) {
+        display: none;
+    }
+
+    #homeRow .col:nth-child(2) {
+        margin: 0px auto;
+        /* width: 100%; */
+        display: block;
+        float: none;
+    }
+
+    .outerBox {
+        min-height: 40vh;
+        display: block;
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    #theirStory .leftSide, #theirStory .rightSide {
+        display: block;
+        padding: 10px;
+
+        margin-bottom: 25px;
+    }
+
+    #herStory.col, #hisStory.col {
+        /* height: 50vh; */
+
+        height: initial;
+    }
+
+    #herFullStory, #hisFullStory {
+        font-size: 22px;
+    }
+
+    .venue-col {
+        white-space: normal;
+    }
+
+    #ourStorySlideOne #venueImage {
+        max-width: 100%;
+        height: auto;
+    }
+    .our-registry .leftSide {
+        display: block;
+    }
+
+    #registryHeader {
+        height: inherit;
+        line-height: inherit;
+    }
+
+    #registryHeader + .col-md-2 {
+        display: none;
+    }
+
+    #ourRegistry #registryHeader #aFewWords:after {
+        display: none;
+    }
+
+    #ourRegistry {
+        height: inherit;
+        line-height: inherit;
+    }
+
+    #ourRegistry #registryHeader #aFewWords:before {}
+
+    #ourRegistry #sur-la-table:after {
+        transform: rotate(0deg);
         left: auto;
-        bottom: 0vh;
-        top: auto;
+        bottom: -50vmax;
+        top: inherit;
+        z-index: 100;
+    }
+
+    .row.our-registry {
+        padding-top: 10vh;
+        background-color: #2B645D;
+    }
+    #kidsRow .col {
+        height: inherit;
+        line-height: inherit;
+        display: block;
+        max-width: 33%;
+    }
+
+    div#kidsRow {
+        height: inherit;
+        line-height: inherit;
+        font-size: 16px !important;
+    }
+
+    #kidsRow .comicStyle:after {
+        border-top: none;
+        border-right: 5px dashed #fff;
+        bottom: auto;
+        left: inherit;
+        right: 49%;
+        top: inherit;
+        height: 30vmax;
+    }
+
+    #kidsRow .col:last-child {
+        max-width: 100%;
+        margin: 0px auto;
+        text-align: center;
+    }
+
+    #kidsRow .line.line-1 {
+        margin: 5vh 0px;
+        font-size: 16px;
+    }
+    #homeRow .col:first-child {
+        width: 30vmax;
+        height: 30vmax;
+        position: absolute;
+        top: 0vh;
+        left: -0.5vh;
+
+        z-index: 100;
+    }
+
+    img#leftImage {
+        max-width: 150%;
+        left: -60px;
+        top: -20px;
+    }
+
+    div#homeRow {
+        padding: 5vh 0px;
+    }
+
+    #homeRow .line-1 {
+        font-size: 8vmin;
+        line-height: 6vmin;
+        display: inline;
+    }
+
+    #homeRow .line-2 {
+        font-size: 7.25vmin;
+        display: inline;
+    }
+
+    #homeRow .line-3 {
+        font-size: 7vmin;
+        display: inline;
+    }
+
+    #homeRow .wedding-date {
+        font-size: 6.5vmin;
+        display: inline;
+    }
+
+    .leftSide {
+        display: block;
+    }
+
+    #homeRow .col:last-child {
+        width: 30vmax;
+        height: 30vmax;
+        position: absolute;
+        top: 6vh;
+        right: 2.5vh;
+
+        z-index: 1;
+    }
+
+    #homeRow .col:nth-child(2) {
+        margin-top: 35vmax;
+    }
+
+    img#rightImage {
+        max-width: 150%;
+        left: -25px;
+        top: -25px;
+    }
+    #herFullStoryRow, #hisFullStoryRow {
+        overflow: visible;
+        height: inherit;
+        padding: 50px 0;
+    }
+    div#theirStory {
+        height: inherit;
+    }
+
+    .row.herstory-row {
+        padding: 50px 0px;
+        background-color: #8F3074;
+    }
+    #theirStory span#logo-box {
+        top: -320px;
     }
 }

@@ -12,23 +12,25 @@ $logo = wp_get_attachment_image_src($logo['ID'], 'large',false);
 global $the_post_ID;
 
 ?>
-<div id="homeRow">
+<div id="homeRow" class="row">
     <?php $post = get_post($the_post_ID); ?>
     <?php if(post_password_required($post)): ?>
         <?php echo get_the_password_form($post); ?>
     <?php else: ?>
-        <div class="left a-third">
-            <img id="leftImage" class="rsImg" src="<?php echo $left_image[0]; ?>" width="<?php echo $left_image[1]; ?>" height="<?php echo $left_image[2] ?>" data-rsw="<?php echo $left_image[1]; ?>" data-rsh="<?php echo $left_image[2] ?>"	/>
+        <div class="col col-md-3 col-md-offset-1">
+            <img id="leftImage" src="<?php echo $left_image[0]; ?>" width="<?php echo $left_image[1]; ?>" height="<?php echo $left_image[2] ?>" />
         </div>
-        <div class="middle a-third">
-            <span class="rsABlock" data-move-effect="top" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
-            <span class="line-1"><?php echo $line_1; ?></span>
-            <span class="line-2"><?php echo $line_2; ?></span>
-            <span class="line-3"><?php echo $line_3; ?></span>
-            <span class="wedding-date"><?php echo $wedding_date; ?></span>
+        <div class="col col-md-3">
+            <div class="leftSide">
+                <span><img id="logo" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" /></span>
+                <span class="line-1"><?php echo $line_1; ?></span>
+                <span class="line-2"><?php echo $line_2; ?></span>
+                <span class="line-3"><?php echo $line_3; ?></span>
+                <span class="wedding-date"><?php echo $wedding_date; ?></span>
+            </div>
         </div>
-        <div class="left a-third">
-            <img id="rightImage" class="rsImg" src="<?php echo $right_image[0]; ?>" width="<?php echo $right_image[1]; ?>" height="<?php echo $right_image[2] ?>" data-rsw="<?php echo $right_image[1]; ?>" data-rsh="<?php echo $right_image[2] ?>" />
+        <div class="col col-md-3">
+            <img id="rightImage" src="<?php echo $right_image[0]; ?>" width="<?php echo $right_image[1]; ?>" height="<?php echo $right_image[2] ?>" />
         </div>
     <?php endif; ?>
 </div>

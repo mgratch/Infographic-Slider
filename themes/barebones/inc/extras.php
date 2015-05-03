@@ -14,6 +14,7 @@
 function gallery_script_and_styles()
 {
 	wp_enqueue_style('prettyPhotoStyles', get_template_directory_uri() . '/photoMosaic/includes/prettyphoto/prettyphoto.css');
+    wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
     wp_enqueue_style('royalsliderDefault', get_template_directory_uri() . '/css/default/rs-default.css');
 	wp_enqueue_style('photoMosaicStyles', get_template_directory_uri() . '/photoMosaic/css/photomosaic.css');
     wp_enqueue_style('navStyle', get_template_directory_uri() . '/assets/css/menu.css');
@@ -22,10 +23,10 @@ function gallery_script_and_styles()
     wp_enqueue_style('royalsliderStyle', get_template_directory_uri() . '/css/royalslider.css');
     wp_enqueue_style('royalsliderDefault', get_template_directory_uri() . '/css/default/rs-default.css');    wp_enqueue_script('prettyPhoto', get_template_directory_uri() . '/photoMosaic/includes/prettyphoto/jquery.prettyPhoto.js', array('jquery'), FALSE, FALSE);
 	wp_enqueue_script('photomosaic', get_template_directory_uri() . '/photoMosaic/js/photomosaic.min.js', array('jquery'), FALSE, FALSE);
-	wp_enqueue_script('functions', get_template_directory_uri() . '/photoMosaic/js/functions.js', array('jquery-mousewheel','photomosaic','royalSliderJS'), FALSE, FALSE);
+	wp_enqueue_script('functions', get_template_directory_uri() . '/photoMosaic/js/functions.js', array('photomosaic','royalSliderJS'), FALSE, FALSE);
 	wp_enqueue_script('royalSliderJS', get_template_directory_uri() . '/js/jquery.royalslider.custom.min.js', array('jquery'), FALSE, FALSE);
     //wp_enqueue_script('rsDeepLinking', get_template_directory_uri() . '/js/jquery.royalslider.deeplinking.js', array('jquery','royalSliderJS'), FALSE, FALSE);
-    wp_enqueue_script('jquery-mousewheel', get_template_directory_uri() . '/js/jquery-mousewheel.js', array('jquery'), FALSE, FALSE);
+    //wp_enqueue_script('jquery-mousewheel', get_template_directory_uri() . '/js/jquery-mousewheel.js', array('jquery'), FALSE, FALSE);
 }
 add_action( 'wp_enqueue_scripts', 'gallery_script_and_styles',11 );
 

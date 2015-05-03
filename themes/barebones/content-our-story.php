@@ -10,12 +10,14 @@ $logo = wp_get_attachment_image_src($logo['ID'], 'large',false);
 
 ?>
 
-<?php echo $our_gallery; ?>
-<div id="underGallery"">
-    <h1 class="title"><?php the_title(); ?><img id="titleImage" class="rsImg" src="<?php echo $title_image[0]; ?>" width="<?php echo $title_image[1]; ?>" height="<?php echo $title_image[2] ?>" data-rsw="<?php echo $title_image[1]; ?>" data-rsh="<?php echo $title_image[2] ?>" /></h1>
+<div id="gallery-container" class="row"><?php echo $our_gallery; ?></div>
+<div id="underGallery" class="row">
+    <div class="col-md-offset-1 col-md-10">
+        <h1 class="title"><?php the_title(); ?><img id="titleImage" class="rsImg" src="<?php echo $title_image[0]; ?>" width="<?php echo $title_image[1]; ?>" height="<?php echo $title_image[2] ?>" data-rsw="<?php echo $title_image[1]; ?>" data-rsh="<?php echo $title_image[2] ?>" /></h1>
+        <span id="logo-box" class="rsABlock" data-move-effect="bottom" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
+    </div>
     <?php if (!empty($our_story)): ?>
         <div id="ourStoryDescription"><?php echo $our_story; ?></div>
     <?php endif; ?>
-    <span id="logo-box" class="rsABlock" data-move-effect="bottom" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
 </div>
 

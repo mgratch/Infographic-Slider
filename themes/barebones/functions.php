@@ -150,7 +150,7 @@ function my_password_form() {
     $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
     $o = '<form class="rsNoDrag protectQuiet" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
     <p>' . __( "Amy & Lee cherish their privacy and yours.  Please log in using the Password Provided with your Save the Date:" ) . '</p>
-    <p><label for="' . $label . '">' . __( "Password:" ) . ' </label><input name="post_password" id="' . $label . '" type="password" placeholder="Enter your password here :)" size="24" maxlength="24" /><input type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '" /></p>
+    <p><label for="' . $label . '">' . __( "Password:" ) . ' </label><input name="post_password" class="col-xs-12 col-sm-9 col-md-9" id="' . $label . '" type="password" placeholder="Enter your password here :)" size="24" maxlength="24" /><input class="col-xs-12 col-sm-3 col-md-3" type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '" /></p>
     </form>
     ';
     return $o;
