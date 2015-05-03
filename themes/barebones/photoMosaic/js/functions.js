@@ -80,6 +80,7 @@ jQuery(window).load(function(){
     var currHeight = jQuery("#theirStorySlider .rsOverflow").outerHeight();
     var slideHeight = jQuery("#herFullStory").outerHeight();
     var theirSlider = $("#theirStorySlider").data('royalSlider');
+    var hisSlideHeight = jQuery("#hisFullStory").outerHeight();
 
     var s = $("a.go-back");
     var pos = s.position();
@@ -124,11 +125,10 @@ jQuery(window).load(function(){
     });
     $("#hisStory a.more-link").on('click',function(e){
         e.preventDefault();
-        var slideHeight = jQuery("#hisFullStory").outerHeight();
-        if (slideHeight > currHeight){
+        if (hisSlideHeight > currHeight){
             theirSlider.ev.on('rsBeforeMove', function(event) {
                 jQuery('html, body').animate({ scrollTop: $("#theirStorySlider").offset().top });
-                jQuery("#theirStorySlider .rsOverflow").height(slideHeight + 25);
+                jQuery("#theirStorySlider .rsOverflow").height(hisSlideHeight + 25);
             });
         }
         theirSlider.goTo(2);
@@ -142,7 +142,7 @@ jQuery(window).load(function(){
             });
         }
         else {
-            theirSlider.ev.on('rsBeforeMove', function(event) {
+            theirSlider.ev.on('rsAfterContentSet', function(event) {
                 jQuery('html, body').animate({ scrollTop: $("#theirStorySlider").offset().top });
                 jQuery("#theirStorySlider .rsOverflow").height(boxOneHeight + 25);
             });
@@ -158,7 +158,7 @@ jQuery(window).load(function(){
             });
         }
         else {
-            theirSlider.ev.on('rsBeforeMove', function(event) {
+            theirSlider.ev.on('rsAfterContentSet', function(event) {
                 jQuery('html, body').animate({ scrollTop: $("#theirStorySlider").offset().top });
                 jQuery("#theirStorySlider .rsOverflow").height(boxOneHeight + 25);
             });
