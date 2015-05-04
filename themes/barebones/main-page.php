@@ -397,7 +397,6 @@ get_header();
         ?>
         <div class="row kids-row">
             <div id="kidsRow" class="container-fluid">
-                <span id="logo-box" class="rsABlock" data-move-effect="top" data-move-offset="600"><img id="logo" class="rsImg" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" data-rsw="<?php echo $logo[1]; ?>" data-rsh="<?php echo $logo[2] ?>" /></span>
                 <?php while ( $kids_page_content->have_posts() ) : $kids_page_content->the_post(); ?>
                     <?php get_template_part( 'content', 'kids-page' ); ?>
                 <?php endwhile; // end of the loop. ?>

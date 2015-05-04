@@ -25,7 +25,7 @@ global $the_post_ID;
                 <span><img id="logo" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" /></span>
                 <span class="line-1"><?php echo $line_1; ?></span>
                 <span class="line-2"><?php echo $line_2; ?></span>
-                <span class="line-3"><?php echo $line_3; ?></span>
+                <span class="line-3"><mark><?php echo $line_3; ?></mark></span>
                 <span class="wedding-date"><?php echo $wedding_date; ?></span>
             </div>
         </div>

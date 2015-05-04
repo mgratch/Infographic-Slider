@@ -148,6 +148,13 @@ input[type="submit"] {
     color: #fff !important;
 }
 
+#homeRow .mark,#homeRow mark {
+    padding: 0px;
+    background-color: transparent;
+    color: #fff;
+    text-decoration: overline;
+}
+
 p {
     margin-bottom: 1.5em !important;
 }
@@ -204,8 +211,9 @@ p {
 #homeRow .line-3 {
     font-size: 4.95vw;
     font-weight: 700;
-    border-top: 5px solid #fff;
-    border-bottom: 5px solid #fff;
+    /* border-top: 5px solid #fff; */
+    /* border-bottom: 5px solid #fff; */
+    text-decoration: underline;
 }
 #homeRow .wedding-date {
     font-size: 4.55vw;
@@ -267,7 +275,7 @@ img#leftImage, img#rightImage {
     line-height: normal;
     height: 100vh;
     position: relative;
-    overflow: visible;
+    /* overflow: hidden; */
 }
 
 #theirStory .leftSide, #theirStory .rightSide {
@@ -382,6 +390,25 @@ img#herImage,img#hisImage {
     display: inline-block;
 }
 
+#ourStorySlideOne span.line.line-3 {
+    display: block !important;
+    width: 100%;
+}
+
+#ourStorySlideOne span.line.line-4 {
+    display: block;
+}
+
+#ourDinner img#venueImage {
+    height: 22vh;
+}
+
+#ourWedding img#venueImage {
+    height: 16vh;
+    width: auto;
+    max-width: inherit;
+}
+
 #ourStorySlideOne,#after-ourStorySlideOne {
     display: block;
     margin: 0px auto;
@@ -411,21 +438,27 @@ img#herImage,img#hisImage {
     float: none;
     text-align: center;
     width: 22vw;
-    /* height: 18vw; */
+    height: 42vh;
     z-index: 200;
     border: 5px dashed;
     background-color: #48143A;
     position: relative;
+    font-size: 14px !important;
 }
 .venue-col:nth-child(3) {
     margin: 0px 10vw;
 }
 
 #ourStorySlideOne p {
-    margin: 0px;
+    margin: 0px auto .5em !important;
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
 }
 #ourStorySlideOne .line {
-    display: block;
+    /* display: block !important; */
+    white-space: normal;
+    font-size: 14px !important;
 }
 #ourStorySlideOne .line.line-3,
 #ourStorySlideOne .line.line-4,
@@ -448,20 +481,22 @@ img#herImage,img#hisImage {
 #ourStorySlideOne .line a {
     color: #fff;
     text-decoration: inherit;
+    font-size: 14px;
 }
 #ourStorySlideOne #ourWedding .line.line-3 {
     display: block;
 }
 #ourStorySlideOne #venueImage {
-    height: 18vh;
+    height: 15vh;
 }
 #ourHotel #venueImage {
     padding-bottom: 17px;
 }
 #ourStorySlideOne .title {
-    font-size: 1.2em;
+    font-size: 18px;
     text-transform: uppercase;
     margin-bottom: 0px;
+    white-space: normal;
 }
 #ourWedding #venueImage {
     padding-bottom: 15px;
@@ -625,7 +660,7 @@ img#amazon-com-img {
 #rsvpRow p:first-child {
     font-size: 2em;
     display: block;
-    margin: auto;
+    margin: 0 auto .7em !important;
 }
 #rsvpRow p:first-child + p {
     font-size: 2vmax;
@@ -641,11 +676,13 @@ img#amazon-com-img {
 #rsvpPlugin {
     display: block;
     width: 100%;
+    /* z-index: 300; */
+    /* background-color: rebeccapurple; */
 }
 
 #rsvpPlugin .rsvpParagraph {
     display: block;
-    margin: 0% auto;
+    margin: 0% auto !important;
     font-size: 1.5em;
 }
 #rsvpContent {
@@ -665,13 +702,13 @@ img#amazon-com-img {
     background-color: #88242C;
     /* padding: 5.5% 3% 6%; */
     text-align: left;
-    height: 100vh;
+    min-height: 100vh;
     font-size: 2vmin;
     position: relative;
 }
 
 #kidsRow .col {
-    height: 100vh;
+    min-height: 100vh;
     line-height: 100vh;
 }
 
@@ -744,13 +781,14 @@ img#amazon-com-img {
 #homeRow .col:after {
     content:"";
     border-left: 5px dashed #fff;
-    height: 30vmax;
+    height: 60vh;
     width: 0px;
     display: block;
     position: absolute;
-    bottom: -130px;
+    bottom: auto;
     right: 50%;
     z-index: 150;
+    margin-top: -50vh;
 }
 
 #homeRow .col:nth-child(2):after {
@@ -781,6 +819,7 @@ img#amazon-com-img {
     left: 27.5%;
     z-index: 100;
     transform: rotate(-45deg);
+    /* bottom: inherit; */
 }
 #gallery-container:before {
     content:"";
@@ -958,15 +997,16 @@ img#amazon-com-img {
     content:"";
     border-left: 5px dashed #fff;
     right: inherit;
-    left: -4vw;
+    /* left: -8vw; */
     width: 0%;
     border-right: 0px;
-    height: 50vmax;
-    bottom: inherit;
-    top: 0vw;
+    height: 60vh;
+    bottom: auto;
+    top: inherit;
     position: absolute;
-    transform: rotate(45deg);
+    /* transform: rotate(45deg); */
     z-index:150;
+    margin-top: 4%;
 }
 
 #rsvpRow #rsvpContent .leftSide:after {
@@ -976,12 +1016,13 @@ img#amazon-com-img {
     left: auto;
     width: 0%;
     border-right: 0px;
-    height: 50vw;
-    bottom: -45vmax;
-    top: auto;
+    height: 52vw;
+    bottom: auto;
+    top: inherit;
     position: absolute;
-    transform: rotate(45deg);
+    /* transform: rotate(45deg); */
     z-index:150;
+    margin-top: 5vh;
 }
 
 #kidsRow .comicStyle:after {
@@ -1163,6 +1204,8 @@ img#logo {
         float: none;
         z-index: 300;
         /* box-sizing: content-box; */
+
+        /* display: none; */
     }
     #hisStory {
         width: 45%;
@@ -1197,7 +1240,7 @@ img#logo {
     img#leftImage {
         max-width: inherit;
         position: absolute;
-        left: -22vw;
+        left: -120px;
         top: -7vh;
         border-radius: 0PX;
         border: 1px transparent;
@@ -1225,7 +1268,7 @@ img#logo {
     img#rightImage {
         max-width: inherit;
         position: absolute;
-        left: -11vw;
+        left: -40px;
         top: -7vh;
         border-radius: 0PX;
         border: 1px transparent;
@@ -1248,8 +1291,119 @@ img#logo {
         font-size: 8.9vmin;
     }
 
+    #theirStory p {
+        font-size: 16px;
+    }
+
     #herStory.col:first-child {
-        margin-left: 0;
+        margin-left: 8.33333333%;
+        margin-right: 8.33333333%;
+        display: block;
+        width: 83.33333333%;
+        height: auto;
+
+        min-height: auto;
+    }
+
+    #hisStory.col {
+        margin-left: 8.33333333%;
+        margin-right: 8.33333333%;
+        display: block;
+        width: 83.33333333%;
+        height: 45vh;
+        margin-top: 5vh;
+    }
+
+
+    .outerBox {
+        height: auto;
+        min-height: initial;
+        display: block;
+        overflow: hidden;
+        padding-bottom: 0px;
+    }
+
+    #theirStory .title {
+        width:inherit;
+        display: inline-block;
+        float: left;
+        font-size: 8vmin;
+
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    img#herImage, img#hisImage {
+        max-width: 150px;
+        float: none;
+        display: none;
+    }
+
+    #herStoryContent, #hisStoryContent {
+        /* float: right; */
+
+        /* display: inline-block; */
+        /* width: 66.667%; */
+        /* font-size: 16px; */
+    }
+
+    #logoCol {
+        display: inline-block;
+    }
+
+    #theirStory .leftSide, #theirStory .rightSide {
+        height: auto;
+
+        display: block;
+        min-height: auto;
+    }
+
+    #hisStory {
+        margin-left:0px;
+        display: inline-block;
+    }
+    .our-registry .leftSide {
+        display: block;
+    }
+
+    #registryHeader {
+        height: inherit;
+        line-height: inherit;
+    }
+
+    #registryHeader + .col-md-2 {
+        display: none;
+    }
+
+    #ourRegistry #registryHeader #aFewWords:after {
+        display: none;
+    }
+
+    #ourRegistry, #registryItems {
+        height: inherit;
+        line-height: inherit;
+    }
+
+    #ourRegistry #registryHeader #aFewWords:before {}
+
+    #ourRegistry #sur-la-table:after {
+        transform: rotate(0deg);
+        left: auto;
+        bottom: auto;
+        top: inherit;
+        z-index: 100;
+    }
+
+    .row.our-registry {
+        padding-top: 10vh;
+        background-color: #2B645D;
+    }
+}
+
+@media (max-width: 800px){
+    #ourStorySlideOne .title {
+        margin-top: .2em;
+        margin-bottom: .2em;
     }
 }
 
@@ -1295,7 +1449,7 @@ img#logo {
     }
 
     .outerBox {
-        min-height: 40vh;
+        min-height: auto;
         display: block;
         font-size: 14px;
         padding: 5px;
@@ -1311,7 +1465,10 @@ img#logo {
     #herStory.col, #hisStory.col {
         /* height: 50vh; */
 
-        height: initial;
+        height: auto;
+
+        /* overflow: hidden; */
+        min-height: auto;
     }
 
     #herFullStory, #hisFullStory {
@@ -1320,48 +1477,15 @@ img#logo {
 
     .venue-col {
         white-space: normal;
+
+        height: 44vh;
     }
 
     #ourStorySlideOne #venueImage {
         max-width: 100%;
         height: auto;
     }
-    .our-registry .leftSide {
-        display: block;
-    }
 
-    #registryHeader {
-        height: inherit;
-        line-height: inherit;
-    }
-
-    #registryHeader + .col-md-2 {
-        display: none;
-    }
-
-    #ourRegistry #registryHeader #aFewWords:after {
-        display: none;
-    }
-
-    #ourRegistry {
-        height: inherit;
-        line-height: inherit;
-    }
-
-    #ourRegistry #registryHeader #aFewWords:before {}
-
-    #ourRegistry #sur-la-table:after {
-        transform: rotate(0deg);
-        left: auto;
-        bottom: -50vmax;
-        top: inherit;
-        z-index: 100;
-    }
-
-    .row.our-registry {
-        padding-top: 10vh;
-        background-color: #2B645D;
-    }
     #kidsRow .col {
         height: inherit;
         line-height: inherit;
@@ -1400,7 +1524,7 @@ img#logo {
         height: 30vmax;
         position: absolute;
         top: 0vh;
-        left: -0.5vh;
+        left: 19vw;
 
         z-index: 100;
     }
@@ -1445,7 +1569,7 @@ img#logo {
         height: 30vmax;
         position: absolute;
         top: 6vh;
-        right: 2.5vh;
+        right: 19vw;
 
         z-index: 1;
     }

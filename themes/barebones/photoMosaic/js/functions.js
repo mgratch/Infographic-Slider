@@ -101,16 +101,12 @@ jQuery(window).load(function(){
     });
 
     if (jQuery(window).width() < jQuery(window).height()){
-        theirSlider.ev.on('rsAfterContentSet', function(event) {
-            jQuery("#theirStorySlider .rsOverflow").animate({
-                height: (boxOneHeight + boxTwoHeight + 25)});
-        });
+        jQuery("#theirStorySlider .rsOverflow").animate({
+            height: (boxOneHeight + boxTwoHeight + 25)});
     }
     else {
-        theirSlider.ev.on('rsAfterContentSet', function(event) {
-            jQuery("#theirStorySlider .rsOverflow").animate({
-                height: (boxOneHeight + 25)});
-        });
+        jQuery("#theirStorySlider .rsOverflow").animate({
+            height: (boxOneHeight + 100)});
     }
 
     $("#herStory a.more-link").on('click',function(e){
@@ -142,9 +138,9 @@ jQuery(window).load(function(){
             });
         }
         else {
-            theirSlider.ev.on('rsAfterContentSet', function(event) {
+            theirSlider.ev.on('rsBeforeMove', function(event) {
                 jQuery('html, body').animate({ scrollTop: $("#theirStorySlider").offset().top });
-                jQuery("#theirStorySlider .rsOverflow").height(boxOneHeight + 25);
+                jQuery("#theirStorySlider .rsOverflow").height(100 + "vh");
             });
         }
         theirSlider.goTo(1);
@@ -158,9 +154,9 @@ jQuery(window).load(function(){
             });
         }
         else {
-            theirSlider.ev.on('rsAfterContentSet', function(event) {
+            theirSlider.ev.on('rsBeforeMove', function(event) {
                 jQuery('html, body').animate({ scrollTop: $("#theirStorySlider").offset().top });
-                jQuery("#theirStorySlider .rsOverflow").height(boxOneHeight + 25);
+                jQuery("#theirStorySlider .rsOverflow").height(100 + "vh");
             });
         }
         theirSlider.goTo(1);
