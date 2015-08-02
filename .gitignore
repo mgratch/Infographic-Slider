@@ -1,2 +1,135 @@
 debug.log
+.htaccess
+php_errorlog
+robots.txt
+wp-content/plugins/stellar-places/git
+
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+
+# wordpress specific
+wp-config.php
 uploads
+blogs.dir/
+upgrade/*
+backup-db/*
+advanced-cache.php
+wp-cache-config.php
+cache/*
+cache/supercache/*
+
+# wp core (as of 3.4.1)
+/db-config.php
+/index.php
+/license.txt
+/readme.html
+/wp-activate.php
+/wp-app.php
+/wp-atom.php
+/wp-blog-header.php
+/wp-comments-post.php
+/wp-commentsrss2.php
+/wp-config-sample.php
+/wp-cron.php
+/wp-feed.php
+/wp-links-opml.php
+/wp-load.php
+/wp-login.php
+/wp-mail.php
+/wp-rdf.php
+/wp-rss.php
+/wp-rss2.php
+/wp-pass.php
+/wp-register.php
+/wp-settings.php
+/wp-signup.php
+/wp-trackback.php
+/xmlrpc.php
+/wp-admin
+/wp-includes
+/themes/twentyten
+/themes/index.php
+/plugins/index.php
+
+# large/disallowed file types
+# a CDN should be used for these
+*.hqx
+*.bin
+*.exe
+*.dll
+*.deb
+*.dmg
+*.iso
+*.img
+*.msi
+*.msp
+*.msm
+*.mid
+*.midi
+*.kar
+*.mp3
+*.ogg
+*.m4a
+*.ra
+*.3gpp
+*.3gp
+*.mp4
+*.mpeg
+*.mpg
+*.mov
+*.webm
+*.flv
+*.m4v
+*.mng
+*.asx
+*.asf
+*.wmv
+*.avi
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac crap
+.DS_Store
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+# Dropbox
+.dropbox
+.dropbox.attr
+
+# SASS
+/.sass-cache/
+
+# PhpStorm
+/.idea/
+
+# Eclipse
+*.pydevproject
+.project
+.metadata
+/build/
+/tmp/
+tests/clover.xml
+
+# NPM / Composer
+composer.lock
+/node_modules/
+/vendor/
+npm-debug.log
+
+# PHPunit config
+phpunit.xml

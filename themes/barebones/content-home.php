@@ -12,15 +12,17 @@ $logo = wp_get_attachment_image_src($logo['ID'], 'large',false);
 global $the_post_ID;
 
 ?>
-<div id="homeRow" class="row">
+<section id="homeRow" class="row scrollPanel">
     <?php $post = get_post($the_post_ID); ?>
     <?php if(post_password_required($post)): ?>
         <?php echo get_the_password_form($post); ?>
     <?php else: ?>
-        <div class="col col-md-3 col-md-offset-1">
-            <img id="leftImage" src="<?php echo $left_image[0]; ?>" width="<?php echo $left_image[1]; ?>" height="<?php echo $left_image[2] ?>" />
+        <div id="herImageCol" class="col-md-3 col-md-offset-1 col-sm-6 col-sm-offset-0">
+            <div id="herPicWrapper" class="col">
+                <img id="leftImage" src="<?php echo $left_image[0]; ?>" width="<?php echo $left_image[1]; ?>" height="<?php echo $left_image[2] ?>" />
+            </div>
         </div>
-        <div class="col col-md-3">
+        <div id="textCol" class="col col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-0">
             <div class="leftSide">
                 <span><img id="logo" src="<?php echo $logo[0]; ?>" width="<?php echo $logo[1]; ?>" height="<?php echo $logo[2] ?>" /></span>
                 <span class="line-1"><?php echo $line_1; ?></span>
@@ -29,8 +31,10 @@ global $the_post_ID;
                 <span class="wedding-date"><?php echo $wedding_date; ?></span>
             </div>
         </div>
-        <div class="col col-md-3">
-            <img id="rightImage" src="<?php echo $right_image[0]; ?>" width="<?php echo $right_image[1]; ?>" height="<?php echo $right_image[2] ?>" />
+        <div id="hisImageCol" class="col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-0">
+            <div id="hisPicWrapper" class="col">
+                <img id="rightImage" src="<?php echo $right_image[0]; ?>" width="<?php echo $right_image[1]; ?>" height="<?php echo $right_image[2] ?>" />
+            </div>
         </div>
     <?php endif; ?>
-</div>
+</section>

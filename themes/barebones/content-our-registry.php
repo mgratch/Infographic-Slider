@@ -9,6 +9,6 @@ $sani_title = sanitize_title($our_registry);
 ?>
 <div id="<?php echo $sani_title; ?>" class="a-fourth">
     <a href="<?php echo $registry_link; ?>" target="_blank">
-        <img id="<?php echo $sani_title."-img"; ?>" class="rsImg registryImg" src="<?php echo $registry_image[0]; ?>" width="<?php echo $registry_image[1]; ?>" height="<?php echo $registry_image[2] ?>" data-rsw="<?php echo $registry_image[1]; ?>" data-rsh="<?php echo $registry_image[2] ?>" />
+        <img id="<?php echo $sani_title."-img"; ?>" class="registryImg" src="<?php echo $registry_image[0]; ?>" width="<?php echo $registry_image[1]; ?>" height="<?php echo $registry_image[2] ?>" />
     </a>
 </div>

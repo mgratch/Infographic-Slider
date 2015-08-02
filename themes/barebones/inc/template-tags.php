@@ -264,3 +264,10 @@ function barebones_category_transient_flusher() {
 }
 add_action( 'edit_category', 'barebones_category_transient_flusher' );
 add_action( 'save_post',     'barebones_category_transient_flusher' );
+
+add_filter( 'the_content_more_link', 'modify_read_more_link' );
+function modify_read_more_link() {
+    global $post;
+    //die();
+    return '<a id="more-link" class="more-link" href="#">Read More</a>';
+}

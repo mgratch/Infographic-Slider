@@ -16,7 +16,7 @@ function rsvp_handle_output ($intialText, $rsvpText) {
 }
 
 function rsvp_frontend_handler($text) {
-	global $wpdb; 
+	global $wpdb;
 	$passcodeOptionEnabled = (rsvp_require_passcode()) ? true : false;
 	//QUIT if the replacement string doesn't exist
 	if (!strstr($text,RSVP_FRONTEND_TEXT_CHECK)) return $text;
@@ -286,7 +286,7 @@ function rsvp_frontend_main_form($attendeeID, $rsvpStep = "handleRsvp") {
       if($a->id != $attendeeID) {
   			$form .= "<div class=\"rsvpAdditionalAttendee\">\r\n";
         $form .= "<div class=\"rsvpAdditionalAttendeeQuestions\">\r\n";
-  			$form .= rsvp_BeginningFormField("", "").RSVP_START_PARA.sprintf(__(" Will %s be attending?", 'rsvp-plugin'), htmlspecialchars($a->firstName." ".$a->lastName)).RSVP_END_PARA.
+  			$form .= rsvp_BeginningFormField("", "").RSVP_START_PARA.sprintf(__(" Will %s be attending?", 'rsvp-plugin'), esc_html(stripslashes($a->firstName." ".$a->lastName))).RSVP_END_PARA.
                 "<input type=\"radio\" name=\"attending".$a->id."\" value=\"Y\" id=\"attending".$a->id."Y\" /> ".
                 "<label for=\"attending".$a->id."Y\">$yesText</label> 
   							<input type=\"radio\" name=\"attending".$a->id."\" value=\"N\" id=\"attending".$a->id."N\" /> ".
@@ -500,8 +500,12 @@ function rsvp_find(&$output, &$text) {
 	if(!$passcodeOptionEnabled && (get_option(OPTION_RSVP_DISABLE_USER_SEARCH) != "Y")) {
 		for($i = 3; $i >= 1; $i--) {
 			$truncFirstName = rsvp_chomp_name($firstName, $i);
-			$attendees = $wpdb->get_results("SELECT id, firstName, lastName, rsvpStatus FROM ".ATTENDEES_TABLE." 
-																			 WHERE lastName = '".esc_sql($lastName)."' AND firstName LIKE '".esc_sql($truncFirstName)."%'");
+      $trueLastName = substr($lastName, strrpos($lastName, ' ') + 1);
+      $middleNames = substr($lastName, 0, strrpos($lastName, ' '));
+      $sql = "SELECT id, firstName, lastName, rsvpStatus FROM ".ATTENDEES_TABLE." 
+					WHERE (lastName = %s AND firstName LIKE  '".esc_sql($truncFirstName)."%%') OR 
+          (lastName = %s AND firstName = %s)";
+ 			$attendees = $wpdb->get_results($wpdb->prepare($sql, $lastName, $trueLastName, $firstName." ".$middleNames));
 			if(count($attendees) > 0) {
 				$output = RSVP_START_PARA."<strong>".__("We could not find an exact match but could any of the below entries be you?", 'rsvp-plugin')."</strong>".RSVP_END_PARA;
 				foreach($attendees as $a) {
@@ -510,7 +514,7 @@ function rsvp_find(&$output, &$text) {
 									<input type=\"hidden\" name=\"attendeeID\" value=\"".$a->id."\" />\r\n
 									<p class=\"rsvpParagraph\" style=\"text-align:left;\">\r\n
 							".htmlspecialchars($a->firstName." ".$a->lastName)." 
-							<input type=\"submit\" value=\"RSVP\" />\r\n
+							<input type=\"submit\" value=\"".__("RSVP", "rsvp-plugin")."\" />\r\n
 							</p>\r\n</form>\r\n";
 				}
 				return rsvp_handle_output($text, $output);

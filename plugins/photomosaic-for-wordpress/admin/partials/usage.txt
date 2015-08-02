@@ -1,0 +1,65 @@
+## "Create Gallery" &amp; "Edit Gallery" workflow (requires WP3.5+) {.subhead .first}
+
+Wordpress v3.5+ users can create and edit their PhotoMosaics like they would a normal Wordpress Gallery.  The last step in the "Create Gallery" workflow takes you to the same screen as you would see when editing an existing gallery : "Edit Gallery".  Once you are on the "Edit Gallery" screen, PhotoMosaic" can be selected from the "Theme" select box.
+
+
+## Shortcodes {.subhead}
+
+A PhotoMosaic shortcode can be used on any post or page to display images in the Wordpress Media Library.  The shortcodes below are interchangeable.
+
+- `[gallery theme="photomosaic"]`
+- `[photomosaic]`
+
+When working with Wordpress galleries, there are three ways to specify the images a shortcode should use:
+
+1. `[photomosaic ids="1,2,3,4,5"]` : a list of images to be used (the result of the "Create Gallery" workflow) *(requires WP v3.5+)*
+2. `[photomosaic id="1"]` : the ID of a post/page that has attached images that should be used
+3. `[photomosaic]` : when no ID or IDs attributes are present PhotoMosaic assumes there are images attached to the current post/page *(eg: on page ID = 5 --> `[photomosaic]` === `[photomosaic id="5"]`)*
+
+A PhotoMosaic can also be used to show any recent posts or recent posts from a specific category/taxonomy:
+
+- `[photomosaic category="recent" limit="20"]` : show the 20 most recent posts from all non-custom-taxonomy categories
+- `[photomosaic category="uncategorized" limit="10"]` : show the 10 most recent posts from the 'uncategorized' category
+- `[photomosaic category="cats, dogs" limit="10"]` : show the 10 most recent posts from the 'cats' and 'dogs' categories
+
+A category in a custom taxonomy can also be used:
+
+- `[photomosaic category="portfolio:weddings"]` - recent posts from the 'weddings' categeory in the 'portfolio' taxonomy
+- `[photomosaic category="portfolio:weddings, portfolio:portraits"]` - recent posts from the 'weddings' and 'portraits' categeories in the 'portfolio' taxonomy
+- `[photomosaic category="portfolio:weddings, kittens"]` - recent posts from the 'weddings' categeory in the 'portfolio' taxonomy and the 'kittens' category in the default taxonomy
+
+Because categories and tags are just built-in taxonomies the following two examples are identical:
+
+- `[photomosaic category="puppies"]`
+- `[photomosaic category="category:puppies"]`
+
+This means that a gallery can be created from tags:
+
+- `[photomosaic category="post_tag:pets"]` - recent posts tagged 'pets' in the default taxonomy
+
+NextGen users can specify a NextGen Gallery ID or a NextGen Album ID.  For albums, all of the images in all of the galleries in the album will be displayed. Images will appear ordered, first, by album and then by the order specified in each gallery.
+
+- Gallery ID --> `[photomosaic nggid="1"]`
+- Album ID --> `[photomosaic ngaid="1"]`
+
+More information about all of the above methods can be found in the [FAQs](#tab-faq){.combo-link}.
+
+
+## Template Tag {.subhead}
+
+PhotoMosaic offers a Template Tag (`wp_photomosaic()`).  This can be added to your theme's template files to automatically add a gallery to every page.
+
+The PhotoMosaic template tag accepts an array of the attributes (list of supported [Inline Attributes](#tab-inlineattrs){.combo-link}).  An Example:
+
+    $atts = array(
+        'id' => 1,
+        'columns' => 3
+    );
+    wp_photomosaic($atts);
+
+
+## Sidebar Widget {.subhead}
+
+A PhotoMosaic shortcode can be placed in a standard Text Widget.  Because Widgets aren't posts or pages they can't have attached images.  This means that you'll need to use any PhotoMosaic method (id, ids, category, nggid, ngaid) except the barebones `[photomosaic]`.
+
+While the Create Gallery flow is unavailable on the Widgets page, you can create a gallery on any post/page and then simply copy/paste the resulting shortcode into your Text Widget.

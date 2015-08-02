@@ -14,7 +14,8 @@
     else{
         $ie_ID = '';
     }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -28,4 +29,4 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class($ie_ID); ?>>
+<body <?php body_class(array($ie_ID)); ?>>

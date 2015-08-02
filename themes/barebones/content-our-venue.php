@@ -5,8 +5,7 @@ $show_title = get_post_meta(get_the_ID(),'show_title',true);
 <div class="col-md-10 col-md-offset-1">
     <?php if(has_post_thumbnail()): ?>
         <div class="comicStyle"><?php the_post_thumbnail('full',array(
-            'id' => 'venueImage',
-            'class' => 'rsImg'
+            'id' => 'venueImage'
         )); ?></div>
     <?php endif; ?>
     <?php if($show_title === '1'): ?>
@@ -15,8 +14,6 @@ $show_title = get_post_meta(get_the_ID(),'show_title',true);
         <span class="line">
     <?php endif; ?>
     <?php if(!empty($description)): ?>
-        <?php the_content(); ?></span>
+        <?php the_content(); ?><a class="go-back" href="#" ><?php echo __('&#9668; Go Back','barebones'); ?></a></span>
     <?php endif; ?>
 </div>
-<a class="go-back" href="#" ><?php echo __('&#9668; Go Back','barebones'); ?></a>
-

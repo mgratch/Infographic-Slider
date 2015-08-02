@@ -11,33 +11,39 @@ $phone_number = get_post_meta(get_the_ID(),'phone_number',true);
 $show_title = get_post_meta(get_the_ID(),'show_title',true);
 $website = get_post_meta(get_the_ID(),'website',true);
 ?>
-<?php if(!empty($title_image)): ?>
-    <img id="venueImage" class="rsImg" src="<?php echo $title_image[0]; ?>" width="<?php echo $title_image[1]; ?>" height="<?php echo $title_image[2] ?>" data-rsw="<?php echo $title_image[1]; ?>" data-rsh="<?php echo $title_image[2] ?>" />
-<?php endif; ?>
-<?php if($show_title === '1'): ?>
-    <?php the_title('<h1 class="title">','</h1>'); ?>
-<?php endif; ?>
-<?php if(!empty($description)): ?>
-    <span class="line line-1"><?php echo $description; ?></span>
-<?php endif; ?>
-<?php if(!empty($biz_name)): ?>
-    <span class="line line-2"><?php echo $biz_name; ?></span>
-<?php endif; ?>
-<?php if(!empty($address)): ?>
-    <span class="line line-3"><?php echo $address; ?></span>
-<?php endif; ?>
-<?php if(!empty($city)): ?>
-    <span class="line line-4"><?php echo $city; ?></span>
-<?php endif; ?>
-<?php if(!empty($state)): ?>
-    <span class="line line-5"><?php echo $state; ?></span>
-<?php endif; ?>
-<?php if(!empty($zip_code)): ?>
-    <span class="line line-6"><?php echo $zip_code; ?></span>
-<?php endif; ?>
-<?php if(!empty($phone_number)): ?>
-    <span class="line line-7"><?php echo '<a href="tel:'.$phone_number.'">'.$phone_number.'</a>'; ?></span>
-<?php endif; ?>
-<?php if(!empty($website)): ?>
-    <a href="<?php echo $website; ?>" tagert="_blank"><?php echo $biz_name; ?></a>
-<?php endif; ?>
+<div id="imageWrap" class="col-sp-6">
+    <?php if(!empty($title_image)): ?>
+        <img id="venueImage" src="<?php echo $title_image[0]; ?>" width="<?php echo $title_image[1]; ?>" height="<?php echo $title_image[2] ?>" />
+    <?php endif; ?>
+</div>
+<div id="contentWrap" class="col-sp-6">
+    <div id="innerWrap">
+        <?php if($show_title === '1'): ?>
+            <?php the_title('<h1 class="title">','</h1>'); ?>
+        <?php endif; ?>
+        <?php if(!empty($description)): ?>
+            <span class="line line-1"><?php echo $description; ?></span>
+        <?php endif; ?>
+        <?php if(!empty($biz_name)): ?>
+            <span class="line line-2"><?php echo $biz_name; ?></span>
+        <?php endif; ?>
+        <?php if(!empty($address)): ?>
+            <span class="line line-3"><?php echo $address; ?></span>
+        <?php endif; ?>
+        <?php if(!empty($city)): ?>
+            <span class="line line-4"><?php echo $city; ?></span>
+        <?php endif; ?>
+        <?php if(!empty($state)): ?>
+            <span class="line line-5"><?php echo $state; ?></span>
+        <?php endif; ?>
+        <?php if(!empty($zip_code)): ?>
+            <span class="line line-6"><?php echo $zip_code; ?></span>
+        <?php endif; ?>
+        <?php if(!empty($phone_number)): ?>
+            <span class="line line-7"><?php echo '<a href="tel:'.$phone_number.'">'.$phone_number.'</a>'; ?></span>
+        <?php endif; ?>
+        <?php if(!empty($website)): ?>
+            <a href="<?php echo $website; ?>" tagert="_blank"><?php echo $biz_name; ?></a>
+        <?php endif; ?>
+    </div>
+</div>

@@ -89,7 +89,7 @@ class SG_CachePress_Supercacher {
 
 		// Check if caching server is varnish or nginx.
 		$sgcache_ip = '/etc/sgcache_ip';
-		$hostname = $_SERVER['SERVER_NAME'];
+		$hostname = $_SERVER['SERVER_ADDR'];
 		$purge_method = "PURGE";
 		if (file_exists($sgcache_ip)) {
 			$hostname = trim( file_get_contents( $sgcache_ip, true ) );
@@ -195,6 +195,7 @@ class SG_CachePress_Supercacher {
 		add_action( 'customize_save', array( $this,'hook_switch_theme' ) );
 		add_action( 'automatic_updates_complete', array( $this,'hook_atomatic_update' ) );
 		add_action( 'future_to_publish', array( $this,'scheduled_goes_live' ) );
+		add_action( '_core_updated_successfully', array( $this,'core_update_hook' ) );		
 
 		// @todo Move the rest of this to a new method - and document what events it is capturing!
 
@@ -419,5 +420,31 @@ class SG_CachePress_Supercacher {
 	 */
 	public function scheduled_goes_live() {
 		$this->purge_cache();
+	}
+	
+	/**
+	 * Purge cache when after successful WordPress core update
+	 *
+	 * @since 3.8.1
+	 */
+	public function core_update_hook() {
+	    $this->purge_cache();
+	}
+	
+	
+	/**
+	 * Returns if the cache header is on
+	 * @param string $url
+	 * @return bool
+	 */
+	public static function return_cache_result( $url )
+	{
+	    $response = wp_remote_get($url);
+	    $xProxyCache = wp_remote_retrieve_header( $response, 'x-proxy-cache' );
+	    
+	    if($xProxyCache == 'HIT')
+	        return true;
+	    else
+	        return false;
 	}
 }

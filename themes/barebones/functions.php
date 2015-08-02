@@ -128,7 +128,7 @@ add_action( 'wp_enqueue_scripts', 'barebones_scripts' );
 /**
  * Custom template tags for this theme.
  */
-//require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Custom functions that act independently of the theme templates.
@@ -157,3 +157,25 @@ function my_password_form() {
 }
 add_filter( 'the_password_form', 'my_password_form' );
 
+if (!is_admin()){
+    //add_filter( 'wp_redirect', function () { debug_print_backtrace(); exit; },999 );
+}
+
+/*
+function remove_unlocal_scripts(){
+    wp_dequeue_script('jquery_validate');
+    wp_deregister_script('jquery_validate');
+    wp_register_script('jquery.validate', get_template_directory_uri().'/js/jquery.validate.js','jquery',false,false);
+    wp_enqueue_script('jquery.validate');
+    wp_dequeue_script('google-maps-js-api');
+    wp_deregister_script('google-maps-js-api');
+    wp_register_script('google_maps_js_api', get_template_directory_uri().'/js/google-maps-js-api.js','',false,false);
+    wp_enqueue_script('google_maps_js_api');
+
+
+}
+get_new_royalslider(1);
+var_dump(NewRoyalSliderMain::$sliders_init_code);
+
+add_action('init', 'remove_unlocal_scripts',12);
+*/
