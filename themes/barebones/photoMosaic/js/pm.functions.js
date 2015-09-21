@@ -24,8 +24,15 @@ jQuery(document).ready(function($) {
         smWindowToggle = 1;
     }
     $(
-        '<style>' +
-            '@media (max-width:991px) {' +
+        '<style id="addDottedLine">' +
+        '@media (min-width:767px) and (max-width:991px) {' +
+                    '#herStory:after{ ' +
+                    'height: calc(' + finalH + 'px - 50vh) !important;' +
+                    'top: 0px' +
+                ' }' +
+            ' }' +
+
+        '@media (max-width:767px) {' +
                     '#homeRow #textCol:after{ ' +
                     'height: ' + finalH + 'px !important;' +
                     'bottom: -'+ finalH +'px' +
@@ -66,13 +73,23 @@ jQuery(window).resize(function( $ ) {
         $("#new-royalslider-1").hide();
         $(contents).show();
     }
-    $(
-        '<style>' +
-        '@media (max-width:991px) {' +
-        '#homeRow #textCol:after{ ' +
-        'height: ' + finalH + 'px !important;' +
-        'bottom: -'+ finalH +'px' +
+    $("#addDottedLine").html(
+        '@media (min-width:767px) and (max-width:991px) {' +
+                '#herStory:after{ ' +
+                'height: calc(' + finalH + 'px - 50vh) !important;' +
+                'top: 0px' +
+            ' }' +
         ' }' +
-        ' }' +
-        '</style>').appendTo('head');
+
+        '@media (max-width:767px) {' +
+                '#homeRow #textCol:after{ ' +
+                'height: ' + finalH + 'px !important;' +
+                'bottom: -'+ finalH +'px' +
+            ' }' +
+                '#herStory:after{ ' +
+                'height: 0;' +
+                'top: 0px' +
+            ' }' +
+        ' }'
+    );
 });

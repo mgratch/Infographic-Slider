@@ -79,6 +79,11 @@ class SG_CachePress_Admin {
 		add_action( 'admin_post_sg-cachepress-purge',  array( 'SG_CachePress_Supercacher', 'purge_cache_admin_bar' ) );
 	}
 	
+	/**
+	 * Displays the notice on the top of admin panel if it has caching issues
+	 * 
+	 * @since 2.2.7
+	 */
 	function plugin_admin_notices() {
 	    $options = new SG_CachePress_Options();
 	    
@@ -86,7 +91,7 @@ class SG_CachePress_Admin {
 	    {
     	    $html = '<div id="ajax-notification" class="updated sg-cachepress-notification">';
     	    $html .= '<p>';
-    	    $html .= __( '<strong>SG CachePress:</strong> Your site '.get_site_url().' is <strong>not cached</strong>! Make sure the Dynamic Cache is enabled in the SuperCache tool in cPanel. <a href="javascript:;" id="dismiss-sg-cahepress-notification">Click here to hide this notice</a>.', 'ajax-notification' );
+    	    $html .= __( '<strong>SG CachePress:</strong> Your site '.get_site_url().' is <strong>not cached</strong>! Make sure the Dynamic Cache is enabled in the SuperCacher tool in cPanel. <a href="javascript:;" id="dismiss-sg-cahepress-notification">Click here to hide this notice</a>.', 'ajax-notification' );
     	    $html .= '</p>';
     	    $html .= '<span id="ajax-notification-nonce" class="hidden">' . wp_create_nonce( 'ajax-notification-nonce' ) . '</span>';
     	    $html .= '</div>';
@@ -94,6 +99,11 @@ class SG_CachePress_Admin {
 	    }
 	}
 	
+	/**
+	 * Loads the global admin js
+	 * 
+	 * @since 2.2.7
+	 */
 	function load_admin_global_js()
 	{
 	    wp_enqueue_script( '', plugins_url( 'js/admin_global.js', __FILE__ ), array( 'jquery' ), SG_CachePress::VERSION, true );
@@ -102,25 +112,27 @@ class SG_CachePress_Admin {
 	/**
 	 * This make test if the cache is on returning the value of the x-proxy-cache header from the desired page by $_POST['url'] parameter
 	 * 
-	 * @since 2.2.5
+	 * @since 2.2.7
 	 */
-	function cache_test_callback($return_result = false)
+	function cache_test_callback()
 	{
 	    $urlToCheck = get_site_url()."/".$_POST['url'];
+	    $result = SG_CachePress_Supercacher::return_cache_result($urlToCheck);
 	    
-	    if( SG_CachePress_Supercacher::return_cache_result($urlToCheck) )
-	        $result = 1;
-	    else
-	        $result = 0;
-	   
-        echo $result;
+	    if($result == 1 && empty($_POST['url']))
+	    {
+	        $options = new SG_CachePress_Options();
+	        $options->disable_option('show_notice');
+	    }
+	    
+	    echo $result;
         wp_die();
 	}
 	
 	/**
 	 * This function hides the notice from displaying when it is manually closed
 	 *
-	 * @since 2.2.5
+	 * @since 2.2.7
 	 */
 	function cache_test_message_hide()
 	{
@@ -128,8 +140,34 @@ class SG_CachePress_Admin {
 	    $options->disable_option('show_notice');
 	    
 	    echo 1;
-	    
 	    wp_die();
+	}
+	
+	/**
+	 * Preloads and caches the server type so it wont have to make query each time when is needed
+	 */
+	public static function return_and_cache_server_type()
+	{
+	    $sgcachepress_options = new SG_CachePress_Options();
+	    if( !$sgcachepress_options->is_enabled('checked_nginx') ) 
+	    {
+	        $sgcachepress_options->enable_option('checked_nginx');
+	        if( SG_CachePress_Supercacher::return_check_is_nginx() )
+	        {
+	            $sgcachepress_options->enable_option('is_nginx');
+	            return true;
+	        }
+	        else
+	        {
+	            $sgcachepress_options->disable_option('is_nginx');
+	            return false;
+	        }
+	    }
+	    
+	    if( $sgcachepress_options->is_enabled('is_nginx') )
+	        return true;
+	        
+	    return false;
 	}
 
 	/**
@@ -168,8 +206,7 @@ class SG_CachePress_Admin {
 
 		//if cache is turned on or off it's a good idea to flush it on right away
 		if ($paramName == 'enable_cache') {
-			global $sg_cachepress_supercacher;
-			$sg_cachepress_supercacher->purge_cache();
+			SG_CachePress_Supercacher::purge_cache();
 		}
 
 		if ($paramName == 'enable_memcached') {
@@ -186,7 +223,18 @@ class SG_CachePress_Admin {
 		}
 
 		if ($this->options_handler->update_option($paramName,$toggledValue))
+		{
+		    if($paramName == 'enable_cache' && $toggledValue == 1)
+		    {
+		        SG_CachePress::check_if_plugin_caches();
+		    }
+		    else if($paramName == 'enable_cache' && $toggledValue == 0)
+		    {
+		        $sg_cachepress_options = new SG_CachePress_Options();
+		        $sg_cachepress_options->disable_option('show_notice');
+		    }
 			die((string)$toggledValue);
+		}
 		else
 			die((string)$currentValue);
 	}

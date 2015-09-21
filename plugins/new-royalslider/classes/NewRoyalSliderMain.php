@@ -596,7 +596,7 @@ class NewRoyalSliderMain {
         <h3><?php _e('Step 1: Add slider HTML to your theme:', 'new_royalslider') ?></h3>
         <h4><?php _e('using shortcode', 'new_royalslider') ?></h2>
 
-        <p><?php echo sprintf(__('Paste shortcode <code>[new_royalslider id="%1$d"]</code> in content area of any post.<br/> If you add slider that overrides default WordPress gallery, you need to add <code>royalslider="%1$d"</code> attribute to [gallery] shortcode.%2$s', 'new_royalslider'), 
+        <p><?php echo sprintf(__('Paste shortcode <span class="rs-shortcode-example">[new_royalslider id="%1$d"]</span> in content area of any post.<br/> If you add slider that overrides default WordPress gallery, you need to add <code>royalslider="%1$d"</code> attribute to [gallery] shortcode.%2$s', 'new_royalslider'), 
             $slider_id, 
             ($slider_id == 123 ? __(' <br/><span class="no-id">Instead of 123 there should be ID of your slider.</span>', 'new_royalslider') : '') ); ?>
         </p>

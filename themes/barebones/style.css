@@ -408,6 +408,8 @@ img#herImage,img#hisImage {
     margin-top: 5%;
     border: 5px dashed #fff;
     padding: 1%;
+    line-height: normal;
+    position: relative;
 }
 
 #ourStory .title, #ourStory h1.title {
@@ -436,9 +438,9 @@ img#herImage,img#hisImage {
 }
 
 #ourWedding img#venueImage {
-    height: 16vh;
-    width: auto;
-    max-width: inherit;
+    /* height: auto; */
+    /* width: auto; */
+    /* max-width: inherit; */
 }
 
 #ourStorySlideOne,#after-ourStorySlideOne {
@@ -453,10 +455,21 @@ img#herImage,img#hisImage {
 }
 
 #ourStorySlideOne-top {
-    display: block;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     height: 60vh;
-    line-height: 60vh;
-    min-height: 300px;
+    /* line-height: 60vh; */
+    /* min-height: 300px; */
 }
 #ourStorySlideOne-top #venueImage {
     height: 18vh;
@@ -471,21 +484,21 @@ img#herImage,img#hisImage {
     padding: 1vmax;
     float: none;
     text-align: center;
-    width: 22vw;
+    width: calc(50% - 1vmax - 10vw);
     height: 42vh;
     z-index: 351;
     border: 5px dashed;
     background-color: #48143A;
     position: relative;
     font-size: 14px !important;
-    min-height: 270px;
+    /* min-height: 270px; */
 }
 .venue-col:nth-child(2) {
     /* margin: 0px 10vw; */
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: calc(10vw + 10px);
-    margin-right: calc(10vw + -10px);
+    /* margin-top: 0; */
+    /* margin-bottom: 0; */
+    margin-left: 10vw;
+    /* margin-right: calc(10vw + -10px); */
 }
 
 #ourStorySlideOne p {
@@ -493,6 +506,8 @@ img#herImage,img#hisImage {
     font-size: 14px;
     font-weight: 600;
     font-style: italic;
+    display: block;
+    width: 100%;
 }
 #ourStorySlideOne .line {
     white-space: normal;
@@ -527,6 +542,16 @@ img#herImage,img#hisImage {
 #ourStorySlideOne #venueImage {
     height: 15vh;
 }
+
+#imageWrap.col-sp-6 {
+    /* height: auto; */
+    /* line-height: normal; */
+    /* text-align: center; */
+    /* width: 100%; */
+    /* display: block; */
+}
+
+
 #ourHotel #venueImage {
     padding-bottom: 17px;
 }
@@ -537,7 +562,7 @@ img#herImage,img#hisImage {
     white-space: normal;
 }
 #ourWedding #venueImage {
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
 }
 
 #ourStorySlideOne .a-third#ourDinner {
@@ -720,7 +745,7 @@ img#amazon-com-img {
     background-color: #E1AE45;
 }
 #rsvpRow p:first-child {
-    font-size: 2em;
+    /* font-size: 2em; */
     display: block;
     margin: 0 auto .7em !important;
     /* overflow: hidden; */
@@ -754,6 +779,10 @@ p.rsvpParagraph {}
     background-color: #E1AE45;
     vertical-align: middle;
     /* overflow: hidden; */
+}
+textarea#rsvp_note {
+    padding: 20px;
+    color: #7E7E7E;
 }
 #kidsRow {
     display: block;
@@ -898,7 +927,7 @@ p.rsvpParagraph {}
     content:"";
     border-right: 5px dashed #fff;
     height: 83px;
-    width: 31vmax;
+    width: calc(100% - 1vmax - 10vw);
     display: block;
     position: absolute;
     top: -25%;
@@ -910,7 +939,7 @@ p.rsvpParagraph {}
     border-left: 5px dashed #fff;
     right: inherit;
     left: 50%;
-    width: 61vmax;
+    width: calc(100% + 1vmax + 10vw - 20PX);
     border-right: 0px;
     border-bottom: 5px dashed #fff;
     height: 13%;
@@ -947,7 +976,7 @@ p.rsvpParagraph {}
     border-left: 5px dashed #fff;
     right: inherit;
     left: 50%;
-    width: 62vmax;
+    width: calc(100% + 1vmax + 10vw - 20PX);
     border-right: 0px;
     border-top: 5px dashed #fff;
     height: 12%;
@@ -965,6 +994,26 @@ p.rsvpParagraph {}
     height: 12%;
     top: -18%;
 }
+
+.venue-col:nth-child(1) {
+    margin-left: 20px;
+}
+
+.venue-col a.more-link, a.go-back {
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    height: inherit;
+    bottom: 0px;
+    background-color: #134385;
+    line-height: normal;
+    border-top: 5px dashed;
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 5px dashed;
+    padding: 1%;
+}
+
 #ourRegistry #registryHeader #description:before {
     content:"";
     border-right: 5px dashed #fff;
@@ -1200,6 +1249,23 @@ img#logo {
     z-index: 300;
     display: none;
 }
+
+.rsvpCustomQuestions .rsvpFormField  p.rsvpParagraph {
+    display: none !important;
+}
+
+.rsvpCustomQuestions .rsvpFormField p.rsvpParagraph + p.rsvpParagraph, .rsvpCustomQuestions .rsvpFormField:nth-child(6) p.rsvpParagraph {
+    display: block !important;
+}
+
+.rsvpAdditionalAttendee .rsvpFormField p.rsvpParagraph + p.rsvpParagraph, .rsvpAdditionalAttendee .rsvpFormField:nth-child(6) p.rsvpParagraph {
+    display: none !important;
+}
+
+.rsvpAdditionalAttendee .rsvpAdditionalAttendeeQuestions .rsvpCustomQuestions .rsvpFormField input {
+    display: none !important;
+}
+
 #kidsRow span#logo-box {
     max-width: 16vw;
     right: auto;
@@ -1247,6 +1313,22 @@ img#logo {
     }
     #ourStorySlideOne .line.line-7 {
         display:block;
+    }
+    .venue-col a.more-link, a.go-back {
+        max-width: 20%;
+        position: absolute;
+        right: 0;
+        height: inherit;
+        bottom: 0px;
+        background-color: #134385;
+        line-height: normal;
+        border-top: 5px dashed;
+        border-bottom: 0;
+        border-right: 0;
+        border-left: 5px dashed;
+        padding: 1%;
+        white-space: normal;
+        word-wrap: break-word;
     }
 }
 
@@ -1392,7 +1474,18 @@ img#logo {
     #theirStory p {
         font-size: 16px;
     }
-
+    #herStory:after {
+        content:"";
+        border-left: 5px dashed #fff;
+        height: 650vh;
+        width: 0px;
+        display: block;
+        position: absolute;
+        top: -0;
+        right: calc(50% - 12.5px);
+        z-index: 150;
+        transform: rotate(0deg);
+    }
     #herStory.col:first-child {
         margin-left: 8.33333333%;
         margin-right: 8.33333333%;
@@ -1556,7 +1649,7 @@ img#logo {
         border-left: 5px dashed #fff;
         height: 650vh;
         width: 0px;
-        display: block;
+        display: none;
         position: absolute;
         top: -75vh;
         right: calc(50vw - 1.33vw);
@@ -1590,6 +1683,8 @@ img#logo {
         min-height: 0;
         width: 100%;
         margin: 50px auto;
+
+        display: block;
     }
     .col-sp-6 {
         width: 50%;
@@ -1600,20 +1695,24 @@ img#logo {
         padding-left: 15px;
     }
     #imageWrap.col-sp-6 {
-        height: 270px;
-        line-height: 270px;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
     }
     #contentWrap.col-sp-6 {
-        line-height: 300px;
         display: block;
     }
     #ourStorySlideOne #innerWrap {
-        vertical-align: middle;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
         line-height: normal;
-        display: inline-block;
     }
     .col-sp-9 {
-        width: 75%;
+        width: 50%;
         float: left;
         position: relative;
         min-height: 1px;
@@ -1621,18 +1720,19 @@ img#logo {
         padding-left: 15px;
     }
     .col-sp-3 {
-        width: 25%;
         float: left;
         position: relative;
         min-height: 1px;
         padding-right: 15px;
         padding-left: 15px;
+        text-align: left;
+        margin-left: 0;
     }
     #imageWrap.col-sp-3 {
-        line-height: 210px;
+        width: 50%;
+        text-align: left;
     }
     #contentWrap.col-sp-6 {
-
     }
     #ourStorySlideOne .line.line-7 a {
         white-space: nowrap;
@@ -1652,40 +1752,67 @@ img#logo {
         background-color: #48143A;
         position: relative;
         font-size: 14px !important;
-        min-height: 280px;
     }
     .venue-col#ourHotel {
-        margin: 0;
-        margin-right: 5%;
+        width: 85%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        height: auto;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin: 50px auto 0px;
+        position: relative;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        min-height: 230px;
     }
     .venue-col#ourDinner {
         margin: 0;
     }
     .venue-col#ourWedding {
         width: 85%;
-        display: block;
-        margin: 50px auto 0px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
         height: auto;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin: 50px auto 0px;
         position: relative;
         min-height: 230px;
     }
     .venue-col#ourWedding .title {
         margin-top: 15px;
     }
-    #ourStorySlideOne #venueImage {
+    #ourWedding img#venueImage {
         float: none;
         vertical-align: middle;
+        width: 100%;
+        height: auto;
     }
     #ourHotel #venueImage {
-
+        float: none;
+        vertical-align: middle;
+        width: 100%;
+        height: auto;
     }
-    #ourDinner #venueImage {
-
-    }
-    #ourWedding #venueImage {
-
-    }
-
     #ourStorySlideOne #ourHotel.venue-col:after{
         display: none;
     }
@@ -1722,6 +1849,19 @@ img#logo {
     }
     #ourStorySlideOne #ourWedding.venue-col:before {
         display: none;
+    }
+    .venue-col a.more-link, a.go-back {
+        max-width: 100%;
+        position: relative;
+        right: 0;
+        height: inherit;
+        bottom: 0px;
+        background-color: transparent;
+        line-height: normal;
+        border:2px dashed;
+        padding: 1%;
+        white-space: normal;
+        word-wrap: break-word;
     }
     #gallery-container:before{
 
@@ -1836,7 +1976,6 @@ img#logo {
     #imageWrap.col-sp-6 {
         height: auto;
         line-height: normal;
-
         text-align: center;
         width: 100%;
         display: block;
@@ -1847,9 +1986,7 @@ img#logo {
         width: 100%;
     }
     #ourStorySlideOne #innerWrap {
-        vertical-align: middle;
-        line-height: normal;
-        display: inline-block;
+
     }
     .col-sp-9 {
         width: 60%;
@@ -1864,7 +2001,6 @@ img#logo {
         margin-top: 25px;
     }
     .col-sp-3 {
-        width: 25%;
         float: left;
         position: relative;
         min-height: 1px;
@@ -1872,46 +2008,36 @@ img#logo {
         padding-left: 15px;
     }
     #imageWrap.col-sp-3 {
-        line-height: 210px;
-
-        width: 40%;
     }
     #ourStorySlideOne .line.line-7 a {
         white-space: nowrap;
     }
     .venue-col {
-        display: inline-block;
-        vertical-align: top;
-        line-height: normal;
-        white-space: normal;
-        padding: 1vmax;
-        float: none;
-        text-align: center;
-        width: 40%;
-        height: auto;
-        z-index: 351;
-        border: 5px dashed;
-        background-color: #48143A;
-        position: relative;
-        font-size: 14px !important;
-        min-height: 280px;
     }
     .venue-col#ourHotel {
-        margin: 0;
-        margin-right: 5%;
     }
     .venue-col#ourDinner {
         margin: 0;
-
         height: auto;
     }
     .venue-col#ourWedding {
         width: 85%;
-        display: block;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         margin: 50px auto 0px;
         height: auto;
         position: relative;
-        min-height: 230px;
+        overflow: hidden;
     }
     .venue-col#ourWedding .title {
         margin-top: 15px;
@@ -2015,7 +2141,7 @@ img#logo {
     }
 
     #ourStorySlideOne #venueImage {
-        max-width: 60%;
+        /* max-width: 60%; */
         height: auto;
     }
 
@@ -2112,6 +2238,9 @@ img#logo {
     #theirStory span#logo-box {
         top: -320px;
     }
+    #herStory:after {
+        display: none;
+    }
 }
 
 @media (max-width: 480px){
@@ -2122,16 +2251,18 @@ img#logo {
         height: auto;
     }
     .venue-col#ourHotel {
-        margin: 0px 0px 40px;
-    }
-    .venue-col#ourWedding {
         margin: 40px auto 0;
-
         min-height: 0;
         max-height: none;
         display: inline-block;
     }
-    #imageWrap.col-sp-3 {
+    .venue-col#ourWedding {
+        margin: 40px auto 0;
+        min-height: 0;
+        max-height: none;
+        display: inline-block;
+    }
+    #imageWrap.col-sp-3, #imageWrap.col-sp-6 {
         height: auto;
         line-height: normal;
         text-align: center;
@@ -2141,6 +2272,7 @@ img#logo {
     #ourWedding img#venueImage {
         max-width: 50%;
         max-height: 100%;
+        padding-bottom: 0;
     }
 
     #contentWrap.col-sp-9 {
@@ -2542,7 +2674,6 @@ a.more-link, a.go-back {
     transition-timing-function: cubic-bezier(0.7,0,0.3,1);
     overflow-y: scroll;
 }
-
 .show-menu .icon-list,
 .show-menu .icon-list a {
     -webkit-transform: translate3d(0,0,0);
@@ -2552,12 +2683,10 @@ a.more-link, a.go-back {
     -webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
     transition-timing-function: cubic-bezier(0.7,0,0.3,1);
 }
-
 .show-menu .icon-list a {
     -webkit-transition-duration: 0.9s;
     transition-duration: 0.9s;
 }
-
 .show-menu .content::before {
     opacity: 1;
     -webkit-transition: opacity 0.8s;
@@ -2567,7 +2696,87 @@ a.more-link, a.go-back {
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
 }
-
 .content-wrap.block-content {
     overflow: hidden;
+}
+#ourStoryDescription .gform_wrapper {
+    max-width: 100%;
+}
+.hidden-label label.gfield_label {
+    display: none !important;
+}
+#ourStoryDescription .ginput_container .gform_drop_area {
+    width: 100%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+#ourStoryDescription input[type="submit"] {
+    background-color: indianred;
+    float: right;
+}
+.ginput_preview input[type="text"], .ginput_preview textarea{
+    color: #000 !important;
+}
+.ginput_preview {
+    /* position: relative; */
+    visibility: hidden;
+    display: inline-block;
+}
+.ginput_preview li{
+    position: relative;
+}
+
+.ginput_preview input, .ginput_preview textarea, .ginput_preview strong {
+    display: none;
+}
+
+.ginput_preview.active .image-meta-form {
+    position: absolute;
+    left: -20vw;
+    width: 320px;
+    display: block;
+    background-color: #f1f1f1;
+    padding: 20px;
+    z-index:99999;
+    top: auto;
+}
+
+.ginput_preview.active input, .ginput_preview.active textarea {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 10px;
+    vertical-align: middle;
+    padding: 10px 5px 10px 5px;
+}
+.ginput_preview.active li textarea {
+    margin-bottom:0px;
+}
+.ginput_preview img.gform_delete {
+    position:absolute;
+    top:3px;
+    left: 3px;
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255,255,255,.5);
+    padding:5px;
+    visibility: hidden;
+}
+.ginput_preview li img {
+    border: 3px solid transparent;
+}
+.ginput_preview.active li img {
+    border: 3px solid #00008b;
+}
+.ginput_preview.active img.gform_delete {
+    border:none;
+    visibility: visible;
+}
+.ginput_preview li {
+    display: inline-block;
+    float: left;
+}
+.ginput_preview li img {
+    margin:0 .5em .5em 0;
 }

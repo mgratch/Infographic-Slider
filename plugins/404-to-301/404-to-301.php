@@ -1,70 +1,95 @@
 <?php
-
-/*
-  Plugin Name: 404 to 301
-  Plugin URI: http://www.joelsays.com/plugins/404-to-301/
-  Description: Automatically redirect all 404 page errors to any page using 301 redirect for SEO. No more 404 Errors in WebMaster tool.
-  Author: Joel James
-  Version: 1.0.8
-  Author URI: http://www.joelsays.com/about/
-  Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XUVWY8HUBUXY4
-  Copyright (c) 2014 Joel James
+/**
+ * Plugin Name:       404 to 301
+ * Plugin URI:        http://iscode.co/products/404-to-301/
+ * Description:       Automatically redirect all <strong>404 errors</strong> to any page using <strong>301 redirect for SEO</strong>. You can <strong>redirect and log</strong> every 404 errors. No more 404 errors in Webmaster tool.
+ * Version:           2.0.6
+ * Author:            Joel James
+ * Author URI:        http://iscode.co/
+ * Donate link:		  https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XUVWY8HUBUXY4
+ * License:           GPL-2.0+
+ * License URI:		  http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       404-to-301
+ * Domain Path:       /languages
+ *
+ * 404 to 301 is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
+ *
+ * 404 to 301 is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with 404 to 301. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @package I4T3
+ * @category Core
+ * @author Joel James
+ * @version 2.0.6
  */
-?>
-<?php
 
-add_action('admin_menu', 'js_404_settings_menu');
-if(!function_exists('js_404_settings_menu')) {
-function js_404_settings_menu() {
-    add_options_page('404 to 301', '404 to 301', 'administrator', 'js-options', 'js_404_settings');
-}
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die('Damn it.! Dude you are looking for what?');
 }
 
-if(!function_exists('js_404_settings')) {
-function js_404_settings() {
-    require_once('js-404-admin.php');
+if(!defined('I4T3_PATH')){
+	define( 'I4T3_PATH', home_url( PLUGINDIR . '/404-to-301/' ) );
 }
+if(!defined('I4T3_PLUGIN_DIR')) {
+	define( 'I4T3_PLUGIN_DIR', __FILE__ );
 }
-
-if(!function_exists('js_404_redirect')) {
-function js_404_redirect(){
-$type = get_option('type');
-$link = get_option('link');
-if(is_404() && !empty($link) && !empty($type)){
-wp_redirect( $link, $type );
-exit;
+if(!defined('I4T3_SETTINGS_PAGE')) {
+	define( 'I4T3_SETTINGS_PAGE', admin_url( 'admin.php?page=i4t3-settings' ) );
 }
+if(!defined('I4T3_LOGS_PAGE')) {
+	define( 'I4T3_LOGS_PAGE', admin_url( 'admin.php?page=i4t3-logs' ) );
 }
+if(!defined('I4T3_DB_VERSION')) {
+	define( 'I4T3_DB_VERSION', '3' );
 }
-add_action('template_redirect', 'js_404_redirect');
-
-register_activation_hook(__FILE__, 'js_404_activate');
-add_action('admin_init', 'js_404_start_redirect');
-
-if(!function_exists('js_404_activate')) {
-function js_404_activate() {
-    add_option('js_404_activation_redirect', true);
+if(!defined('I4T3_VERSION')) {
+	define( 'I4T3_VERSION', '2.0.6' );
 }
+// Set who all can access 404 settings. You can change this if you want to give others access.
+if(!defined('I4T3_ADMIN_PERMISSION')) {
+	define( 'I4T3_ADMIN_PERMISSION', 'manage_options' );
 }
 
-if(!function_exists('js_404_start_redirect')) {
-function js_404_start_redirect() {
-    if (get_option('js_404_activation_redirect', false)):
-        delete_option('js_404_activation_redirect');
-        wp_redirect('options-general.php?page=js-options');
-    endif;
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-dcl-activator.php
+ */
+function activate_i4t3() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-404-to-301-activator.php';
+	_404_To_301_Activator::activate();
 }
-}
+register_activation_hook( __FILE__, 'activate_i4t3' );
 
-if(!function_exists('js_404_action_links')) {
-function js_404_action_links($links, $file) {
-    $plugin_file = basename(__FILE__);
-    if (basename($file) == $plugin_file) :
-		$settings_link = '<a href="options-general.php?page=js-options">Settings</a>';
-		array_unshift($links, $settings_link);
-    endif;
-    return $links;
-}
-}
+/**
+ * The core plugin class that is used to define
+ * dashboard-specific hooks, and public-facing site hooks.
+ */
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-404-to-301.php';
 
-add_filter('plugin_action_links', 'js_404_action_links', 10, 2);
+/**
+ * Begins execution of the plugin.
+ *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    2.0.0
+ */
+function run_i4t3() {
+
+	$plugin = new _404_To_301();
+	$plugin->run();
+
+}
+run_i4t3();
+
+//*** Thank you for your interest in 404 to 301 - Developed and managed by Joel James ***// 

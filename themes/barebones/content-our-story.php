@@ -6,10 +6,12 @@ $title_image = get_post_meta(get_the_ID(),'title_image',true);
 if ($title_image){
     $title_image = wp_get_attachment_image_src($title_image['ID'],'medium',false);
 }
+$jp_ready_content = apply_filters( 'the_content', get_the_content() );
+$jp_ready_content = apply_filters( 'jp_carousel_force_enable', $jp_ready_content );
 
 ?>
 
-<div id="gallery-container" class="row"><div id="target"><?php the_content(); ?></div></div>
+<div id="gallery-container" class="row"><div id="target"><?php echo $jp_ready_content; ?></div></div>
 <div id="underGallery" class="row">
     <div class="col-md-offset-0 col-md-6 col-sm-offset-0 col-sm-6">
         <h1 class="title"><?php the_title(); ?><img id="titleImage" src="<?php echo $title_image[0]; ?>" width="<?php echo $title_image[1]; ?>" height="<?php echo $title_image[2] ?>" /></h1>

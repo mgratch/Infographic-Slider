@@ -13,7 +13,7 @@ if(!class_exists("NewRoyalSliderWidget")){
 class NewRoyalSliderWidget extends WP_Widget {
 
 	function NewRoyalSliderWidget() {
-		$this->WP_Widget( 
+		parent::__construct(
 			'new_royalslider_widget', 
 			__('RoyalSlider', "new_royalslider"),
 			array( 'classname' => 'new_royalslider_widget', 'description' => __('RoyalSlider Widget', "new_royalslider") ),

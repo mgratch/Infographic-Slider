@@ -120,10 +120,12 @@ margin-left: 2px;
 .right-info-bar h2 {
 	font-weight: normal
 }
-.right-info-bar code {
+.right-info-bar code,
+.right-info-bar span.rs-shortcode-example {
 	background: #FFF9D8;
 	padding: 2px 4px;
 	font-size: 13px;
+	font-family: Consolas, Monaco, monospace;
 }
 .right-info-bar h3 {
 	margin-top: 20px;

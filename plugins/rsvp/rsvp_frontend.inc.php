@@ -16,7 +16,7 @@ function rsvp_handle_output ($intialText, $rsvpText) {
 }
 
 function rsvp_frontend_handler($text) {
-	global $wpdb;
+	global $wpdb; 
 	$passcodeOptionEnabled = (rsvp_require_passcode()) ? true : false;
 	//QUIT if the replacement string doesn't exist
 	if (!strstr($text,RSVP_FRONTEND_TEXT_CHECK)) return $text;

@@ -190,10 +190,11 @@ class NewRoyalSliderInstagramSource {
 
 							$image['image'] = $item['images']['standard_resolution']['url'];
 							$image['thumbnail'] = $item['images']['thumbnail']['url'];
-							//$image['title'] = isset($item['caption']) ? $item['caption']['text'] : '';
 
 							$image['title'] =  isset($item['caption']) ? htmlspecialchars($item['caption']['text']) : '';
 							$image['title'] = mb_convert_encoding( $image['title'] ,'HTML-ENTITIES','utf-8');
+
+							$image['title'] = apply_filters( 'new_rs_instagram_title_text', $image['title'], $image);
 
 							$image['original_obj'] = $item;
 							

@@ -177,29 +177,6 @@ get_header();
                                     <?php
 
                                     $args = array (
-                                        'post_type'              => 'rehearsal_dinner',
-                                        'post_status'            => 'publish',
-                                        'pagination'             => false,
-                                        'posts_per_page'         => '1',
-                                        'ignore_sticky_posts'    => false,
-                                        'no_found_rows'          => false,
-                                        'Update_post_term_cache' => false,
-                                        'Update_Post_meta_cache' => false
-                                    );
-
-                                    // The Query
-                                    $rehearsal_dinner_content = new WP_Query( $args );
-
-                                    ?>
-                                    <div class='venue-col' id="ourDinner">
-                                        <?php while ( $rehearsal_dinner_content->have_posts() ) : $rehearsal_dinner_content->the_post(); ?>
-                                            <?php get_template_part( 'content', 'rehearsal-dinner' ); ?>
-                                        <?php endwhile; // end of the loop. ?>
-                                    </div>
-
-                                    <?php
-
-                                    $args = array (
                                         'post_type'              => 'the_wedding',
                                         'post_status'            => 'publish',
                                         'pagination'             => false,

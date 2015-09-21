@@ -9,7 +9,7 @@
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
-	$content_width = 1280; /* pixels */
+	$content_width = 800; /* pixels */
 }
 
 if ( ! function_exists( 'barebones_setup' ) ) :
@@ -179,3 +179,168 @@ var_dump(NewRoyalSliderMain::$sliders_init_code);
 
 add_action('init', 'remove_unlocal_scripts',12);
 */
+
+add_filter( 'gform_save_field_value', 'save_field_value', 10, 4 );
+function save_field_value( $value, $lead, $field, $form ) {
+    $output_ids = array();
+    global $files_to_sideload;
+    if(!isset($files_to_sideload) || empty($files_to_sideload)){
+        $files_to_sideload = array();
+    }
+    //if not the form with fields to encode, just return the unaltered value without checking the fields
+    if ( absint( $form['id'] ) <> 1 ) {
+        return $value;
+    }
+
+    //array of field ids to encode
+    $encode_fields = array( 1 );
+
+    //see if the current field id is in the array of fields to encode; encode if so, otherwise return unaltered value
+    if ( in_array( $field->id, $encode_fields ) ) {
+        $urls = json_decode($value);
+        foreach ($urls as $url) {
+
+            $tmp = download_url($url);
+            if (is_wp_error($tmp)) {
+                // download failed, handle error
+            }
+            $file_array = array();
+
+            // Set variables for storage
+            // fix file filename for query strings
+            preg_match('/[^\?]+\.(jpg|jpe|jpeg|gif|png)/i', $url, $matches);
+            $file_array['name'] = basename($matches[0]);
+            $file_array['tmp_name'] = $tmp;
+
+            // If error storing temporarily, unlink
+            if (is_wp_error($tmp)) {
+                @unlink($file_array['tmp_name']);
+                $file_array['tmp_name'] = '';
+            }
+
+            // do the validation and storage stuff
+            $files_to_sideload[] = $file_array;
+
+        }
+        return $value;
+    } else {
+        if (isset($field->id) && $field->id == 3){
+            $post_id = array(38,183);
+            $desc = "";
+            $i = 0;
+            $image_meta_array = json_decode($value);
+            foreach ($files_to_sideload as $file){
+                $file_name = $image_meta_array[$i]->id;
+                if (strpos($file['name'],$file_name) !== false){
+                    $new_title = $image_meta_array[$i]->title;
+                    $desc = $image_meta_array[$i]->desc;
+
+                }
+
+                if (empty($new_title)){
+                    $new_title = $file_name;
+                }
+
+                $post_data = array(
+                    'post_content' => $desc
+                );
+
+                $id = media_handle_sideload($file, $post_id, $new_title, $post_data);
+
+                // If error storing permanently, unlink
+                if (is_wp_error($id)) {
+                    @unlink($file['tmp_name']);
+                    return $id;
+                }
+
+                $output_ids[] = $id;
+                $src = wp_get_attachment_url($id);
+                $i++;
+
+            }
+            foreach ($post_id as $single_post) {
+                $new_content = get_post_field('post_content', $single_post);
+
+                $pattern = get_shortcode_regex();
+
+                if (   preg_match_all( '/'. $pattern .'/s', $new_content, $matches )
+                    && array_key_exists( 2, $matches )
+                    && in_array( 'gallery', $matches[2] ) )
+                {
+                    $short_code = $matches[0];
+
+
+                    $re1='((?:[a-z][a-z0-9_]*))';	# Variable Name 1
+                    $re2='(=)';	# Any Single Character 1
+                    $re3='(".*?")';	# Double Quote String 1
+
+                    /*
+                     * for some reason short_code_ids doesn't seem to want to grab the last attribute,
+                     * so I am going to build my own array of shortcode attributes so I can update the ids
+                     * before loading.
+                     */
+
+                    preg_match_all ("/".$re1.$re2.$re3."/is", $short_code[0], $short_code_atts);
+
+                    $short_code_atts_aray = array();
+
+                    for($i = 0; $i < count($short_code_atts[0]); $i++){
+                        $short_code_atts_aray[$short_code_atts[1][$i]] = $short_code_atts[3][$i];
+                    }
+
+                    //$short_code_atts = shortcode_parse_atts($short_code[0]);
+                    $short_code_atts_aray['ids'] = str_replace('"', '', $short_code_atts_aray['ids']);
+                    $id_array = explode(",",$short_code_atts_aray['ids']);
+                    foreach($output_ids as $an_id){
+                        $id_array[] = $an_id;
+                    }
+                    $new_id_str = implode(",",$id_array);
+                    //$short_code_atts['ids'] = $new_id_str;
+                    $new_shortcode = str_replace($short_code_atts_aray['ids'], $new_id_str, $short_code);
+                    $new_content = str_replace($short_code,$new_shortcode,$new_content);
+                }
+
+                $curr_post = array(
+                    'ID' => $single_post,
+                    'post_content' => $new_content
+                );
+                wp_update_post($curr_post);
+            }
+        }
+        return $value;
+    }
+}
+
+add_filter( 'gform_field_content', 'subsection_field', 10, 5 );
+function subsection_field( $content, $field, $value, $lead_id, $form_id ) {
+    if($field->type == 'fileupload' && $form_id == 1){
+        $content = str_replace('Drop files here or ',"Drop Your Favorite Pictures of Amy & Lee Here or ",$content);
+        $content = str_replace("button gform_button_select_files","button gform_button btn btn-default", $content);
+
+    }
+    return $content;
+}
+
+add_filter("gform_submit_button", "bootstrap_styles_for_gravityforms_buttons", 10, 5);
+function bootstrap_styles_for_gravityforms_buttons($button, $form){
+
+    $button = str_replace('class=\'gform_button', 'class=\'gform_button btn btn-default', $button);
+
+    return $button;
+
+} // End bootstrap_styles_for_gravityforms_buttons()
+
+function add_referring_pic_data_query( $vars ){
+    $vars[] = "title";
+    $vars[] = 'description';
+    $vars[] = 'caption';
+    return $vars;
+}
+//add_filter( 'query_vars', 'add_referring_pic_data_query' );
+
+add_filter( 'gform_confirmation', 'custom_confirmation', 10, 4 );
+function custom_confirmation( $confirmation, $form, $entry, $ajax ) {
+
+    return $confirmation;
+}
+
